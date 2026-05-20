@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🍽️ Formulário Restaurante | Aula de Formulários HTML</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #2b2d2f 0%, #1e1f22 100%);
+      padding: 2rem 1.5rem;
+      color: #1f2a2e;
+    }
+
+    /* Container principal estilo carta gourmet */
+    .form-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fffef7;
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 215, 150, 0.3);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    /* cabeçalho temático */
+    .form-header {
+      background: #9b2e1f;
+      background-image: radial-gradient(circle at 10% 30%, rgba(255, 215, 150, 0.15) 2%, transparent 2.5%);
+      background-size: 28px 28px;
+      padding: 2rem 2rem 1.5rem 2rem;
+      text-align: center;
+      color: white;
+      border-bottom: 5px solid #f4c542;
+    }
+
+    .form-header h1 {
+      font-size: 2.1rem;
+      letter-spacing: -0.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .form-header h1 span {
+      background: #f4c542;
+      color: #3a1f12;
+      font-size: 1.3rem;
+      border-radius: 60px;
+      padding: 0.2rem 0.9rem;
+    }
+
+    .form-header p {
+      font-size: 1rem;
+      margin-top: 0.7rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    /* formulário principal */
+    form {
+      padding: 2rem 2rem 2.2rem 2rem;
+    }
+
+    /* Cada grupo fieldset com estilo refinado */
+    fieldset {
+      border: none;
+      background: #ffffff;
+      margin-bottom: 2rem;
+      border-radius: 1.5rem;
+      padding: 1.5rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 0 #e9e6dd;
+      transition: 0.1s linear;
+      border: 1px solid #f0ede3;
+    }
+
+    legend {
+      font-size: 1.35rem;
+      font-weight: 700;
+      background: #fffef7;
+      padding: 0 0.8rem;
+      margin-left: -0.5rem;
+      color: #9b2e1f;
+      border-left: 5px solid #f4c542;
+      border-radius: 30px;
+      letter-spacing: -0.3px;
+      display: inline-block;
+      width: auto;
+    }
+
+    /* grid responsivo para campos */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem 2rem;
+      margin-top: 1rem;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #4a3729;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    label i {
+      font-style: normal;
+      font-size: 1.1rem;
+    }
+
+    input, select, textarea {
+      font-family: inherit;
+      font-size: 0.95rem;
+      padding: 0.8rem 1rem;
+      background-color: #fefcf5;
+      border: 1.5px solid #e2dccc;
+      border-radius: 1rem;
+      transition: 0.2s;
+      outline: none;
+      width: 100%;
+      color: #1f2a2e;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #f4b942;
+      box-shadow: 0 0 0 3px rgba(244, 185, 66, 0.2);
+      background-color: #ffffff;
+    }
+
+    /* Estilo para radios e checkboxes agrupados */
+    .opcoes-group {
+      background: #fefaf0;
+      padding: 1rem 1.2rem;
+      border-radius: 1.2rem;
+      margin-top: 0.5rem;
+      border: 1px solid #f0e2ce;
+    }
+
+    .radio-row, .checkbox-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      margin: 0.6rem 0;
+    }
+
+    .radio-row label, .checkbox-row label {
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: normal;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #2b2b2b;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+      width: 1.1rem;
+      height: 1.1rem;
+      accent-color: #9b2e1f;
+      margin: 0;
+    }
+
+    /* range personalizado */
+    input[type="range"] {
+      padding: 0;
+      height: 6px;
+      border-radius: 10px;
+      background: #e3dacb;
+    }
+
+    input[type="range"]:focus {
+      box-shadow: none;
+    }
+
+    /* cor especial */
+    input[type="color"] {
+      height: 48px;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    /* file upload */
+    input[type="file"] {
+      padding: 0.6rem 0.2rem;
+      background: #fefaf0;
+    }
+
+    /* botoes */
+    .botoes-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.3rem;
+      margin-top: 1.8rem;
+    }
+
+    button, input[type="submit"], input[type="reset"] {
+      border: none;
+      background: #e9e1d1;
+      padding: 0.8rem 2rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 3rem;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: inherit;
+      letter-spacing: 0.3px;
+    }
+
+    input[type="submit"] {
+      background: #9b2e1f;
+      color: white;
+      box-shadow: 0 5px 0 #5e1e12;
+      transform: translateY(-2px);
+    }
+
+    input[type="submit"]:hover {
+      background: #b63c2a;
+      transform: translateY(0px);
+      box-shadow: 0 2px 0 #5e1e12;
+    }
+
+    input[type="reset"] {
+      background: #f0e7d8;
+      color: #4a3a2c;
+      border: 1px solid #dbcbaa;
+    }
+
+    input[type="reset"]:hover {
+      background: #e4d7c2;
+    }
+
+    hr {
+      margin: 0.5rem 0;
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, #f0e3cf, transparent);
+    }
+
+    small {
+      color: #7b6b58;
+      font-size: 0.7rem;
+    }
+
+    /* adaptação mobile */
+    @media (max-width: 700px) {
+      body {
+        padding: 1rem;
+      }
+      form {
+        padding: 1.2rem;
+      }
+      fieldset {
+        padding: 1rem;
+      }
+      .radio-row, .checkbox-row {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      legend {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Datalist não altera visual, mas mantemos alinhado */
+    datalist {
+      display: none;
+    }
+
+    .dica {
+      font-size: 0.7rem;
+      color: #ad957c;
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <div class="form-header">
+    <h1>
+      🧑‍🍳 Sabor & Brasa 
+      <span>Reserva Experience</span>
+    </h1>
+    <p>Monte sua experiência gastronômica — todos os campos são pensados para você conhecer os tipos de formulários HTML! 🍷</p>
+  </div>
+
+  <form action="#" method="post">
+    <!-- ========== 1. DADOS PESSOAIS ========== -->
+    <fieldset>
+      <legend>👤 1. Seus dados</legend>
+      <div class="form-grid">
+        <div class="campo">
+          <label>🍽️ Nome completo</label>
+          <input type="text" name="nome" placeholder="Ex: Ana Maria Souza" required>
+        </div>
+        <div class="campo">
+          <label>📧 E-mail</label>
+          <input type="email" name="email" placeholder="contato@exemplo.com" required>
+        </div>
+        <div class="campo">
+          <label>📞 Telefone (Whatsapp)</label>
+          <input type="tel" name="telefone" placeholder="(11) 99999-1234">
+        </div>
+        <div class="campo full-width">
+          <label>🔗 Seu perfil no Instagram do restaurante (opcional)</label>
+          <input type="url" name="instagram" placeholder="https://instagram.com/seu_perfil">
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ========== 2. DETALHES DA RESERVA ========== -->
+    <fieldset>
+      <legend>📅 2. Detalhes da reserva</legend>
+      <div class="form-grid">
+        <div class="campo">
+          <label>🗓️ Data desejada</label>
+          <input type="date" name="data_reserva" value="2026-06-15">
+        </div>
+        <div class="campo">
+          <label>⏰ Horário</label>
+          <input type="time" name="horario" value="20:00">
+        </div>
+        <div class="campo">
+          <label>👥 Número de convidados</label>
+          <input type="number" name="convidados" min="1" max="30" value="2" step="1">
+        </div>
+        <div class="campo">
+          <label>🍛 Estilo de cozinha preferido</label>
+          <select name="cozinha">
+            <option value="" disabled selected>── Selecione uma opção ──</option>
+            <option value="italiana">🍝 Cozinha Italiana</option>
+            <option value="japonesa">🍣 Cozinha Japonesa</option>
+            <option value="brasileira">🥩 Churrasco & Brasileira</option>
+            <option value="mexicana">🌮 Mexicana picante</option>
+            <option value="mediterranea">🥗 Mediterrânea</option>
+            <option value="vegetariana">🌱 Vegetariana / Vegana</option>
+          </select>
+        </div>
+        <div class="campo full-width">
+          <label>⭐ Satisfação esperada (de 0 a 10 estrelas)</label>
+          <input type="range" name="satisfacao" min="0" max="10" step="1" value="8" list="marcas-range">
+          <datalist id="marcas-range">
+            <option label="0 😞"></option>
+            <option label="5 👍"></option>
+            <option label="10 🤩"></option>
+          </datalist>
+          <div class="dica">Arraste para definir seu nível de expectativa 🌟</div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ========== 3. PREFERÊNCIAS + RADIO + CHECKBOX VARIADOS ========== -->
+    <fieldset>
+      <legend>🎯 3. Preferências & ocasião</legend>
+      <div class="form-grid">
+        <!-- Radio group: ocasião especial -->
+        <div class="campo full-width">
+          <label>✨ Qual a ocasião da visita?</label>
+          <div class="opcoes-group">
+            <div class="radio-row">
+              <label><input type="radio" name="ocasiao" value="aniversario"> 🎂 Aniversário / Festa</label>
+              <label><input type="radio" name="ocasiao" value="romantico"> 💖 Encontro romântico</label>
+              <label><input type="radio" name="ocasiao" value="negocios"> 💼 Reunião de negócios</label>
+              <label><input type="radio" name="ocasiao" value="familia"> 👪 Happy hour família</label>
+              <label><input type="radio" name="ocasiao" value="outro" checked> 🍀 Só pra matar a fome</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radio group: tipo de menu (segundo grupo) -->
+        <div class="campo full-width">
+          <label>📋 Preferência de menu</label>
+          <div class="opcoes-group">
+            <div class="radio-row">
+              <label><input type="radio" name="tipo_menu" value="tradicional"> 🍖 Tradicional (carnes e massas)</label>
+              <label><input type="radio" name="tipo_menu" value="vegano" checked> 🌿 Vegano/Vegetariano</label>
+              <label><input type="radio" name="tipo_menu" value="degustacao"> 🧀 Menu degustação (surpresa)</label>
+              <label><input type="radio" name="tipo_menu" value="lowcarb"> 🥑 Low carb / fitness</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkboxes (vários) -->
+        <div class="campo full-width">
+          <label>🍾 Serviços extras / adicionais</label>
+          <div class="opcoes-group">
+            <div class="checkbox-row">
+              <label><input type="checkbox" name="extras" value="decoracao"> 🎈 Decoração temática</label>
+              <label><input type="checkbox" name="extras" value="bolo"> 🎂 Bolo personalizado</label>
+              <label><input type="checkbox" name="extras" value="sommelier"> 🍷 Sommelier a disposição</label>
+              <label><input type="checkbox" name="extras" value="estacionamento"> 🚗 Manobrista / Estacionamento</label>
+              <label><input type="checkbox" name="extras" value="kids"> 🧸 Espaço kids / recreação</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ========== 4. CAMPOS CRIATIVOS: DATALIST, COLOR, FILE, ESCONDIDO ========== -->
+    <fieldset>
+      <legend>🎨 4. Toque especial (cores, favoritos e arquivos)</legend>
+      <div class="form-grid">
+        <!-- input com datalist -->
+        <div class="campo">
+          <label>🍲 Seu prato favorito (sugestões automáticas)</label>
+          <input type="search" name="prato_favorito" list="lista-pratos" placeholder="Digite ou escolha...">
+          <datalist id="lista-pratos">
+            <option>Lasanha à bolonhesa</option>
+            <option>Risoto de camarão</option>
+            <option>Bife à parmegiana</option>
+            <option>Salmon Teriyaki</option>
+            <option>Moqueca baiana</option>
+            <option>Hambúrguer artesanal</option>
+            <option>Taco mexicano</option>
+            <option>Pizza margherita</option>
+          </datalist>
+          <div class="dica">Escolha ou digite seu prato favorito 🍜</div>
+        </div>
+
+        <!-- color picker + semana reserva -->
+        <div class="campo">
+          <label>🎨 Cor da toalha / tema da mesa</label>
+          <input type="color" name="cor_mesa" value="#d4320f">
+          <div class="dica">Escolha uma cor para o clima da mesa (opcional)</div>
+        </div>
+
+        <div class="campo">
+          <label>📆 Semana da reserva (planejamento antecipado)</label>
+          <input type="week" name="semana_referencia" value="2026-W24">
+        </div>
+
+        <!-- file upload -->
+        <div class="campo full-width">
+          <label>🖼️ Envie uma foto do seu prato preferido (ou receipt de inspiração)</label>
+          <input type="file" name="foto_prato" accept="image/png, image/jpeg, image/jpg">
+          <div class="dica">Máximo 5MB (apenas para demonstração)</div>
+        </div>
+
+        <!-- campo hidden (invisível, mas presente - útil pra tracking) -->
+        <input type="hidden" name="origem_form" value="restaurante_reserva_aula">
+        
+        <!-- campo datetime-local (combinado) exemplo extra -->
+        <div class="campo">
+          <label>⏲️ Data + Hora alternativa (formato completo)</label>
+          <input type="datetime-local" name="datetime_alternativo" value="2026-06-20T19:30">
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ========== 5. RADIO EXTRA (contato) + CHECKBOX DIVERSOS + TEXTAREA ========== -->
+    <fieldset>
+      <legend>💬 5. Contato e mensagem especial</legend>
+      <div class="form-grid">
+        <div class="campo full-width">
+          <label>📢 Deseja receber ofertas e eventos exclusivos?</label>
+          <div class="opcoes-group">
+            <div class="radio-row">
+              <label><input type="radio" name="newsletter" value="sim" checked> ✅ Sim, quero novidades e descontos</label>
+              <label><input type="radio" name="newsletter" value="nao"> ❌ Não, obrigado</label>
+              <label><input type="radio" name="newsletter" value="eventos"> 🎫 Só eventos especiais</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="campo full-width">
+          <label>🍷 Restrições alimentares / alergias</label>
+          <div class="checkbox-row" style="flex-wrap: wrap; gap: 1rem;">
+            <label><input type="checkbox" name="alergia1" value="gluten"> 🚫 Glúten</label>
+            <label><input type="checkbox" name="alergia2" value="lactose"> 🥛 Lactose</label>
+            <label><input type="checkbox" name="alergia3" value="frutos_mar"> 🦐 Frutos do mar</label>
+            <label><input type="checkbox" name="alergia4" value="nozes"> 🌰 Nozes / castanhas</label>
+            <label><input type="checkbox" name="alergia5" value="apimentado"> 🌶️ Sem apimentado</label>
+          </div>
+          <div class="dica">Selecione as restrições para o chef preparar com cuidado</div>
+        </div>
+        
+        <div class="campo full-width">
+          <label>📝 Pedidos especiais ou observações (música, surpresa, homenagem)</label>
+          <textarea name="observacoes" rows="4" placeholder="Ex: Gostaria de uma sobremesa surpresa, toalha na cor escolhida, comemoração de aniversário..."></textarea>
+        </div>
+
+        <!-- input numérico de avaliação da experiência passada (exemplo extra) -->
+        <div class="campo">
+          <label>🏆 Quantas vezes já visitou nosso restaurante?</label>
+          <input type="number" name="visitas_anteriores" min="0" max="50" value="1" step="1">
+        </div>
+        <!-- select múltiplo pra demonstração extra -->
+        <div class="campo">
+          <label>🍷 Bebidas de interesse (seleção múltipla)</label>
+          <select name="bebidas" multiple size="3" style="height: auto;">
+            <option>Vinho tinto</option>
+            <option>Vinho branco</option>
+            <option>Espumante</option>
+            <option>Cerveja artesanal</option>
+            <option>Drinks autorais</option>
+            <option>Sucos naturais</option>
+          </select>
+          <div class="dica">Ctrl + clique para escolher várias opções</div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- BOTOES DE ENVIO E RESET -->
+    <div class="botoes-area">
+      <input type="submit" value="✨ Enviar reserva ✨">
+      <input type="reset" value="🗑️ Limpar formulário">
+    </div>
+    <hr>
+    <small>📚 Aula prática de HTML & CSS - formulário com todos os tipos: text, email, tel, url, date, time, number, range, select, radio, checkbox, file, color, week, datetime-local, search/datalist, textarea e múltiplos grupos. Tema restaurante 🍽️</small>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Fredoka:wght@400;600;700&display=swap');
+
+:root {
+    --color-bg: #1a1a2e;
+    --color-surface: #16213e;
+    --color-card: #0f3460;
+    --color-accent: #e94560;
+    --color-accent-2: #f5a623;
+    --color-accent-3: #4ecdc4;
+    --color-text: #eaeaea;
+    --color-text-muted: #8892a4;
+    --font-display: 'Fredoka', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --radius: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-display);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 20px;
+}
+
+code {
+    font-family: var(--font-mono);
+    color: var(--color-accent-3);
+    background: rgba(78,205,196,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.page__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-align: center;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 760px;
+}
+
+.section__title {
+    font-size: 1.1rem;
+    color: var(--color-accent-3);
+    font-weight: 600;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(78,205,196,0.2);
+}
+
+.section__description {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+/* =============================================
+   DEMO-CARD
+   ============================================= */
+.demo-card {
+    background-color: var(--color-card);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.demo-card__title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-accent-2);
+}
+
+.demo-card__arena {
+    background-color: var(--color-surface);
+    border-radius: 10px;
+    padding: 16px;
+    min-height: 160px;
+    display: flex;
+    gap: 10px;
+    border: 2px dashed rgba(255,255,255,0.07);
+}
+
+/* =============================================
+   ITEM — filho flex
+   ============================================= */
+.item {
+    background-color: var(--color-accent);
+    border-radius: 10px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: white;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    padding: 6px;
+    text-align: center;
+}
+
+.item:hover { transform: scale(1.06); }
+
+/* Modificadores de altura */
+.item--tall   { height: 120px; }
+.item--medium { height: 80px; }
+.item--short  { height: 50px; }
+.item--no-height { /* sem height — stretch vai esticar até o container */ }
+
+/* Modificador align-self */
+.item--self-end {
+    align-self: flex-end;
+    background-color: var(--color-accent-2);
+    width: 80px;
+}
+
+/* =============================================
+   MODIFICADORES — align-items
+   ============================================= */
+.demo-card__arena--items-start   { align-items: flex-start; }
+.demo-card__arena--items-center  { align-items: center; }
+.demo-card__arena--items-end     { align-items: flex-end; }
+.demo-card__arena--items-stretch { align-items: stretch; }
+
+/* =============================================
+   MODIFICADORES — align-content (com wrap)
+   ============================================= */
+.demo-card__arena--content-start,
+.demo-card__arena--content-center,
+.demo-card__arena--content-between {
+    flex-wrap: wrap;
+    min-height: 200px;
+}
+
+.demo-card__arena--content-start   { align-content: flex-start; }
+.demo-card__arena--content-center  { align-content: center; }
+.demo-card__arena--content-between { align-content: space-between; }

@@ -1,0 +1,97 @@
+body {
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.title {
+    font-family: Verdana, Tahoma, sans-serif;
+    color: darkred;
+    background-color: chocolate;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.section {
+    display: flex;
+    background-color: slateblue;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 30px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(63, 15, 142);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    color: antiquewhite;
+}
+
+/* ========================= */
+/* GRID BÁSICO */
+/* ========================= */
+
+.example-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.example-grid p {
+    background-color: rgb(43, 164, 13);
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* ========================= */
+/* GRID 2 COLUNAS */
+/* ========================= */
+
+.example-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.example-grid-2 p {
+    background-color: rgb(43, 164, 13);
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* ========================= */
+/* GRID RESPONSIVO (3 → 2 → 1) */
+/* ========================= */
+
+.example-grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.example-grid-responsive p {
+    background-color: rgb(43, 164, 13);
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* tablet */
+@media (max-width: 800px) {
+    .example-grid-responsive {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* mobile */
+@media (max-width: 500px) {
+    .example-grid-responsive {
+        grid-template-columns: 1fr;
+    }
+}

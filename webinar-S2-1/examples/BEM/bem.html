@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bem.css">
+    <title>Mas afinal, o que é BEM?</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Mas afinal, o que é BEM?</h1>
+        <p class="header__subtitle">Uma metodologia de nomenclatura CSS. Esse HTML usa BEM pra se explicar.</p>
+    </header>
+
+    <!-- =============================================
+         SEÇÃO 1 — BLOCK
+         ============================================= -->
+    <section class="explainer">
+
+        <div class="explainer__badge">Block</div>
+        <h2 class="explainer__title">Eu sou um Bloco.</h2>
+        <p class="explainer__text">
+            Minha classe CSS é <code>.explainer</code>. Um <strong>Block</strong> é uma unidade independente — 
+            faz sentido sozinho, sem depender do contexto ao redor. 
+            Pense nele como um componente: um card, um menu, um formulário, um header.
+        </p>
+        <p class="explainer__text">
+            Um bloco tem um nome simples, sem underscores nem hífens duplos.
+            Tudo que está dentro de mim <em>pertence</em> a mim — e vai dizer isso no próprio nome da classe.
+        </p>
+        <div class="explainer__code-block">
+            <code>.explainer { ... }   /* ← isso é um bloco */</code>
+        </div>
+
+    </section>
+
+    <!-- =============================================
+         SEÇÃO 2 — ELEMENT
+         ============================================= -->
+    <section class="explainer">
+
+        <div class="explainer__badge">Element</div>
+        <h2 class="explainer__title">Eu sou um Título. Mas não sou qualquer título.</h2>
+        <p class="explainer__text">
+            Minha classe é <code>.explainer__title</code>. Esse <code>__</code> (dois underscores) é a 
+            assinatura de um <strong>Element</strong> — um filho que pertence a um bloco específico.
+        </p>
+        <p class="explainer__text">
+            Um Element não existe fora do seu bloco. O <code>.explainer__title</code> é o título 
+            <em>desse componente</em>. Se ele aparecer em outro lugar, ele vai ter outra classe — 
+            porque vai pertencer a outro bloco.
+        </p>
+        <div class="explainer__code-block">
+            <code>.explainer__title { ... }   /* ← bloco__elemento */</code>
+        </div>
+
+    </section>
+
+    <!-- =============================================
+         SEÇÃO 3 — MODIFIER
+         ============================================= -->
+    <section class="explainer">
+
+        <div class="explainer__badge">Modifier</div>
+        <h2 class="explainer__title">E quando um bloco precisa de uma variação?</h2>
+        <p class="explainer__text">
+            Entra o <strong>Modifier</strong> — marcado com <code>--</code> (dois hífens).
+            Ele descreve uma variação de estado ou aparência de um bloco ou elemento.
+        </p>
+
+        <p class="explainer__text">Os dois cards abaixo são o mesmo bloco <code>.status-card</code>. 
+        A diferença está no modifier:</p>
+
+        <div class="explainer__demo">
+            <div class="status-card status-card--success">
+                <span class="status-card__icon">✅</span>
+                <p class="status-card__label">status-card--success</p>
+                <p class="status-card__description">Tô verde porque tenho o modifier <code>--success</code>.</p>
+            </div>
+            <div class="status-card status-card--warning">
+                <span class="status-card__icon">⚠️</span>
+                <p class="status-card__label">status-card--warning</p>
+                <p class="status-card__description">Tô laranja porque tenho o modifier <code>--warning</code>. Mesmo bloco, outra personalidade.</p>
+            </div>
+            <div class="status-card status-card--error">
+                <span class="status-card__icon">❌</span>
+                <p class="status-card__label">status-card--error</p>
+                <p class="status-card__description">E eu sou o <code>--error</code>. Ninguém me confunde com os outros dois.</p>
+            </div>
+        </div>
+
+        <div class="explainer__code-block">
+            <code>.status-card--success { ... }   /* ← bloco--modifier */</code>
+        </div>
+
+    </section>
+
+    <!-- =============================================
+         CONCLUSÃO
+         ============================================= -->
+    <section class="conclusion">
+        <h2 class="conclusion__title">Você acabou de ler BEM aplicado.</h2>
+        <p class="conclusion__text">
+            Todo esse HTML usa a metodologia BEM — blocos, elementos e modificadores — na nomenclatura 
+            das próprias classes que explicam o conceito. 
+        </p>
+        <p class="conclusion__text">
+            A lógica é simples: <strong>bloco</strong> é o componente, 
+            <strong>bloco__elemento</strong> é uma parte interna, 
+            e <strong>bloco--modifier</strong> é uma variação.
+        </p>
+        <p class="conclusion__text">
+            Guarda esse arquivo. Ele é seu guia de referência rápida pra qualquer projeto que vier pela frente.
+        </p>
+        <div class="conclusion__formula">
+            <span class="conclusion__formula-part conclusion__formula-part--block">.bloco</span>
+            <span class="conclusion__formula-separator">+</span>
+            <span class="conclusion__formula-part conclusion__formula-part--element">.bloco__elemento</span>
+            <span class="conclusion__formula-separator">+</span>
+            <span class="conclusion__formula-part conclusion__formula-part--modifier">.bloco--modifier</span>
+        </div>
+    </section>
+
+</body>
+</html>

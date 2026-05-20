@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Position — Guia Visual (corrigido e separado)</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <span>position:</span>
+  <a href="#static" class="c1">static</a>
+  <a href="#relative" class="c2">relative</a>
+  <a href="#absolute" class="c3">absolute</a>
+  <a href="#fixed" class="c4">fixed</a>
+  <a href="#sticky" class="c5">sticky</a>
+</nav>
+
+<main>
+
+  <!-- ══════════════════════════════════
+       1. STATIC
+  ══════════════════════════════════ -->
+  <section id="static">
+    <p class="sec-num">01</p>
+    <h2 class="sec-title" style="color:var(--c1)">static</h2>
+    <p class="sec-desc">
+      Valor padrão. O elemento segue o <strong>fluxo normal</strong> do documento.
+      Propriedades <code>top/left/right/bottom</code> e <code>z-index</code> não funcionam.
+    </p>
+    <div class="playground">
+      <div class="pg-header">
+        <div class="pg-dot" style="background:var(--c1)"></div>
+        playground — elementos estáticos
+      </div>
+      <div class="pg-body">
+        <div class="static-row" id="static-row">
+          <div class="sbox">A</div>
+          <div class="sbox">B</div>
+          <div class="sbox">C</div>
+          <div class="sbox">D</div>
+        </div>
+        <div class="explain" style="border-color:var(--c1)">
+          Todos com <code>position: static</code>. Eles aparecem na ordem do HTML.
+          Não é possível movê-los com <code>top/left</code>.
+        </div>
+        <div class="code-snip">
+          .elemento {<br>
+          &nbsp;&nbsp;position: static;<br>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       2. RELATIVE (correto)
+  ══════════════════════════════════ -->
+  <section id="relative">
+    <p class="sec-num">02</p>
+    <h2 class="sec-title" style="color:var(--c2)">relative</h2>
+    <p class="sec-desc">
+      O elemento <strong>continua ocupando seu espaço</strong> no fluxo, mas pode ser deslocado
+      com <code>top/left</code> em relação à sua posição original.
+    </p>
+    <div class="playground">
+      <div class="pg-header">
+        <div class="pg-dot" style="background:var(--c2)"></div>
+        playground — mova o elemento B
+      </div>
+      <div class="pg-body">
+        <div class="btn-group">
+          <button class="btn active" data-rel="0,0">sem deslocamento</button>
+          <button class="btn" data-rel="20,0">top: 20px</button>
+          <button class="btn" data-rel="0,30">left: 30px</button>
+          <button class="btn" data-rel="20,30">top: 20px + left: 30px</button>
+        </div>
+
+        <div class="relative-stage">
+          <div class="rbox">A</div>
+          <div class="rbox relative-target" id="rel-target">B</div>
+          <div class="rbox">C</div>
+        </div>
+
+        <div class="explain rel-explain" style="border-color:var(--c2)">
+          B está no lugar normal. O espaço dele está reservado.
+        </div>
+        <div class="code-snip">
+          .B {<br>
+          &nbsp;&nbsp;position: relative;<br>
+          &nbsp;&nbsp;<span class="hl rel-code">top: 0; left: 0;</span><br>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       3. ABSOLUTE (corrigido: badge É FILHO do card!)
+  ══════════════════════════════════ -->
+  <section id="absolute">
+    <p class="sec-num">03</p>
+    <h2 class="sec-title" style="color:var(--c3)">absolute</h2>
+    <p class="sec-desc">
+      O elemento <strong>sai do fluxo</strong> e se posiciona em relação ao <strong>ancestral mais próximo com position diferente de static</strong>.
+      Se não existir, usa o <code>&lt;html&gt;</code> (viewport).
+    </p>
+
+    <div class="playground">
+      <div class="pg-header">
+        <div class="pg-dot" style="background:var(--c3)"></div>
+        playground — toggle no pai (.card)
+      </div>
+      <div class="pg-body">
+        <div class="btn-group">
+          <button class="btn active" data-abs="static">pai: static</button>
+          <button class="btn" data-abs="relative">pai: relative</button>
+        </div>
+
+        <!-- AGORA O BADGE É FILHO DIRETO DO .card (estrutura correta) -->
+        <div class="abs-card-container" id="abs-card-container">
+          <div class="abs-card" id="abs-card">
+            <div class="abs-card-label">.card — position: static</div>
+            <div class="abs-card-text">Conteúdo do card</div>
+            <div class="abs-badge" id="abs-badge">NOVO</div>
+          </div>
+        </div>
+
+        <div class="explain abs-explain" style="border-color:var(--c3)">
+          O <strong>.card</strong> está com <code>position: static</code>.
+          O badge olha para o pai, vê <code>static</code>, então sobe até a página (viewport) e fica no canto superior direito da tela.
+        </div>
+        <div class="code-snip">
+          .card { <span class="hl abs-code-pai">position: static;</span> }<br>
+          .badge { position: absolute; top: 10px; right: 10px; }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       4. FIXED (real, sem gambiarra)
+  ══════════════════════════════════ -->
+  <section id="fixed">
+    <p class="sec-num">04</p>
+    <h2 class="sec-title" style="color:var(--c4)">fixed</h2>
+    <p class="sec-desc">
+      Sai do fluxo e se ancora na <strong>viewport (janela do navegador)</strong>.
+      Não rola com a página. A própria navbar deste site usa <code>position: fixed</code>.
+    </p>
+    <div class="playground">
+      <div class="pg-header">
+        <div class="pg-dot" style="background:var(--c4)"></div>
+        playground — simulação de um modal/botão fixo
+      </div>
+      <div class="pg-body">
+        <div class="fixed-demo-area">
+          <div class="fixed-example-container">
+            <div class="fixed-box" id="fixedBox">
+              📌 position: fixed
+            </div>
+          </div>
+          <button id="toggleFixedBtn" class="btn" style="margin-top: 12px;">Mostrar/Esconder elemento fixed</button>
+        </div>
+        <div class="explain fixed-explain" style="border-color:var(--c4)">
+          O quadrado laranja tem <code>position: fixed; bottom: 20px; right: 20px;</code> em relação à viewport.
+          Role a página — ele continua fixo.
+        </div>
+        <div class="code-snip">
+          .fixed-box {<br>
+          &nbsp;&nbsp;position: fixed;<br>
+          &nbsp;&nbsp;bottom: 20px; right: 20px;<br>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       5. STICKY (correto)
+  ══════════════════════════════════ -->
+  <section id="sticky">
+    <p class="sec-num">05</p>
+    <h2 class="sec-title" style="color:var(--c5)">sticky</h2>
+    <p class="sec-desc">
+      Híbrido: age como <code>relative</code> dentro do container, mas "gruda" quando atinge o limite
+      (<code>top: 0</code>) enquanto o pai está visível.
+    </p>
+    <div class="playground">
+      <div class="pg-header">
+        <div class="pg-dot" style="background:var(--c5)"></div>
+        playground — role a lista
+      </div>
+      <div class="pg-body">
+        <div class="sticky-scroll-area">
+          <div class="sticky-group-header sticky-enabled">Grupo A</div>
+          <div class="sticky-row">Item A1</div>
+          <div class="sticky-row">Item A2</div>
+          <div class="sticky-row">Item A3</div>
+          <div class="sticky-row">Item A4</div>
+          <div class="sticky-row">Item A5</div>
+          <div class="sticky-row">Item A6</div>
+          <div class="sticky-group-header sticky-enabled">Grupo B</div>
+          <div class="sticky-row">Item B1</div>
+          <div class="sticky-row">Item B2</div>
+          <div class="sticky-row">Item B3</div>
+          <div class="sticky-row">Item B4</div>
+          <div class="sticky-row">Item B5</div>
+          <div class="sticky-row">Item B6</div>
+          <div class="sticky-row">Item B7</div>
+          <div class="sticky-row">Item B8</div>
+          <div class="sticky-group-header sticky-enabled">Grupo C</div>
+          <div class="sticky-row">Item C1</div>
+          <div class="sticky-row">Item C2</div>
+          <div class="sticky-row">Item C3</div>
+          <div class="sticky-row">Item C4</div>
+          <div class="sticky-row">Item C5</div>
+          <div class="sticky-row">Item C6</div>
+          <div class="sticky-row">Item C7</div>
+          <div class="sticky-row">Item C8</div>
+        </div>
+        <div class="explain sticky-explain" style="border-color:var(--c5)">
+          Cabeçalhos com <code>position: sticky; top: 0</code> grudam no topo enquanto o grupo está visível.
+        </div>
+        <div class="code-snip">
+          .group-header {<br>
+          &nbsp;&nbsp;position: sticky;<br>
+          &nbsp;&nbsp;top: 0;<br>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

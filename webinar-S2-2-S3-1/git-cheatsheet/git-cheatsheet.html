@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Cheatsheet</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="git-cheatsheet.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="header">
+    <h1>Git cheatsheet</h1>
+    <span class="badge">Sprint 3</span>
+  </div>
+
+  <!-- Configuração inicial -->
+  <div class="section">
+    <div class="section-label">Configuração inicial</div>
+    <div class="flow">
+
+      <div class="step teal"
+        data-tip="git init"
+        data-color="teal"
+        data-desc="Transforma a pasta atual num repositório Git. A partir daqui o Git começa a monitorar tudo que muda dentro dela.">
+        <code>git init</code>
+        <small>cria o repo local</small>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="step teal"
+        data-tip="git add ."
+        data-color="teal"
+        data-desc="Diz pro Git: 'esses arquivos aqui vão entrar no próximo save'. É como selecionar o que você quer fotografar antes de bater a foto.">
+        <code>git add .</code>
+        <small>seleciona o que vai salvar</small>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="step teal"
+        data-tip="git commit -m '...'"
+        data-color="teal"
+        data-desc="Bate a foto. Salva um ponto na história do projeto com uma mensagem descrevendo o que mudou. Você sempre pode voltar aqui.">
+        <code>git commit -m '...'</code>
+        <small>salva um ponto na história</small>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="step purple"
+        data-tip="git remote add origin <url>"
+        data-color="purple"
+        data-desc="Informa ao seu repositório local onde fica a versão remota no GitHub. É como salvar o endereço de casa no GPS — você só faz isso uma vez.">
+        <code>git remote add origin &lt;url&gt;</code>
+        <small>aponta pro GitHub</small>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="step purple"
+        data-tip="git push --set-upstream origin master"
+        data-color="purple"
+        data-desc="Faz o primeiro envio pro GitHub e cria a ligação entre sua branch local e a remota. Depois disso, um simples 'git push' já basta.">
+        <span class="once">1x</span>
+        <code>git push --set-upstream origin master</code>
+        <small>conecta local ↔ remoto</small>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Ciclo do dia a dia -->
+  <div class="section">
+    <div class="section-label">Ciclo do dia a dia</div>
+    <div class="cycle-wrapper">
+      <div class="flow">
+
+        <div class="step coral"
+          data-tip="git add ."
+          data-color="coral"
+          data-desc="Diz pro Git quais arquivos modificados vão entrar no próximo commit. O ponto '.' seleciona tudo de uma vez.">
+          <code>git add .</code>
+          <small>seleciona o que vai salvar</small>
+        </div>
+
+        <span class="arrow">→</span>
+
+        <div class="step coral"
+          data-tip="git commit -m '...'"
+          data-color="coral"
+          data-desc="Salva o estado atual do projeto com uma mensagem. Escreva algo que te ajude a entender o que mudou daqui a 3 meses.">
+          <code>git commit -m '...'</code>
+          <small>salva um ponto na história</small>
+        </div>
+
+        <span class="arrow">→</span>
+
+        <div class="step coral"
+          data-tip="git push"
+          data-color="coral"
+          data-desc="Envia os commits locais pro GitHub. Só funciona depois que a conexão com o remoto já foi configurada.">
+          <code>git push</code>
+          <small>envia pro GitHub</small>
+        </div>
+
+      </div>
+      <div class="cycle-label">repete a cada nova alteração</div>
+    </div>
+  </div>
+
+  <!-- Legenda -->
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot teal"></span>local</div>
+    <div class="legend-item"><span class="legend-dot purple"></span>conectar ao GitHub</div>
+    <div class="legend-item"><span class="legend-dot coral"></span>ciclo diário</div>
+  </div>
+
+</div>
+
+<!-- Tooltip -->
+<div class="tooltip" id="tooltip">
+  <div class="tip-cmd" id="tip-cmd"></div>
+  <div class="tip-text" id="tip-text"></div>
+</div>
+
+<script src="git-cheatsheet.js"></script>
+</body>
+</html>

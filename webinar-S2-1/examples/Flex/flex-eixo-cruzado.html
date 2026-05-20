@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="flex-eixo-cruzado.css">
+    <title>Flex — Eixo Cruzado</title>
+</head>
+<body>
+
+    <h1 class="page__title">Eixo Cruzado: <code>align-items</code>, <code>align-self</code> e <code>align-content</code></h1>
+
+    <!-- ALIGN-ITEMS -->
+    <section class="section">
+        <h2 class="section__title">align-items — alinha todos os filhos no eixo cruzado</h2>
+
+        <div class="demo-card">
+            <h3 class="demo-card__title">align-items: flex-start</h3>
+            <div class="demo-card__arena demo-card__arena--items-start">
+                <p class="item item--tall">1</p>
+                <p class="item item--short">2</p>
+                <p class="item item--medium">3</p>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3 class="demo-card__title">align-items: center</h3>
+            <div class="demo-card__arena demo-card__arena--items-center">
+                <p class="item item--tall">1</p>
+                <p class="item item--short">2</p>
+                <p class="item item--medium">3</p>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3 class="demo-card__title">align-items: flex-end</h3>
+            <div class="demo-card__arena demo-card__arena--items-end">
+                <p class="item item--tall">1</p>
+                <p class="item item--short">2</p>
+                <p class="item item--medium">3</p>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3 class="demo-card__title">align-items: stretch (padrão)</h3>
+            <div class="demo-card__arena demo-card__arena--items-stretch">
+                <p class="item item--no-height">1</p>
+                <p class="item item--no-height">2</p>
+                <p class="item item--no-height">3</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ALIGN-SELF -->
+    <section class="section">
+        <h2 class="section__title">align-self — sobrescreve o align-items em um filho específico</h2>
+
+        <div class="demo-card">
+            <h3 class="demo-card__title">O container tem align-items: flex-start — mas o item 2 manda em si mesmo</h3>
+            <div class="demo-card__arena demo-card__arena--items-start">
+                <p class="item item--tall">1</p>
+                <p class="item item--tall item--self-end">2 (self: end)</p>
+                <p class="item item--tall">3</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ALIGN-CONTENT -->
+    <section class="section">
+        <h2 class="section__title">align-content — alinha as linhas quando há wrap</h2>
+        <p class="section__description">Só funciona quando há <code>flex-wrap</code> e os itens quebram em mais de uma linha.</p>
+
+        <div class="demo-card">
+            <h3 class="demo-card__title">align-content: flex-start</h3>
+            <div class="demo-card__arena demo-card__arena--content-start">
+                <p class="item">1</p><p class="item">2</p><p class="item">3</p>
+                <p class="item">4</p><p class="item">5</p><p class="item">6</p>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3 class="demo-card__title">align-content: center</h3>
+            <div class="demo-card__arena demo-card__arena--content-center">
+                <p class="item">1</p><p class="item">2</p><p class="item">3</p>
+                <p class="item">4</p><p class="item">5</p><p class="item">6</p>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3 class="demo-card__title">align-content: space-between</h3>
+            <div class="demo-card__arena demo-card__arena--content-between">
+                <p class="item">1</p><p class="item">2</p><p class="item">3</p>
+                <p class="item">4</p><p class="item">5</p><p class="item">6</p>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>

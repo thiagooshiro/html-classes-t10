@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: Verdana, Tahoma, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4b2e2e;
+    color: wheat;
+    padding: 20px;
+}
+
+nav a{
+    text-decoration: none;
+    color: wheat;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 60vh;
+}
+
+
+.image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
+
+.cafe-img {
+    max-width: 100%;
+    height: auto;
+}

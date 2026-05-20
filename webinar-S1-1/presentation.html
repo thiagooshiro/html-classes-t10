@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 1 | Web Dev - TripleTen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">&lt;<span>Code</span>/&gt;</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Agenda</a></li>
+                <li><a href="#what-is-dev">Ser dev</a></li>
+                <li><a href="#agreement">O Acordo</a></li>
+                <li><a href="#ai">IA</a></li>
+                <li><a href="#tools">Ferramentas</a></li>
+                <li><a href="#resources">Recursos</a></li>
+                <li><a href="#next-class">Próxima aula</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="snap-container">
+
+        <!-- ========== SLIDE: INTRO ========== -->
+        <div class="snap-section">
+            <div class="section-card">
+                <span class="badge">🎓 Bootcamp TripleTen</span>
+                <h1>Desenvolvimento Web do zero ao primeiro projeto</h1>
+                <h3 class="subhead">Não é sobre decorar sintaxe. É sobre aprender a pensar como um desenvolvedor.</h3>
+
+                <div class="feature-card">
+                    <ul class="feature-list">
+                        <li>🧠 O que é ser desenvolvedor web — mentalidade antes de sintaxe</li>
+                        <li>🧪 Por que programação é experimental — e por que o erro é seu aliado</li>
+                        <li>🤝 O Acordo — nosso pacto durante o bootcamp</li>
+                        <li>🤖 Como usar IA sem prejudicar seu aprendizado</li>
+                        <li>🛠️ As ferramentas que vamos usar</li>
+                        <li>🧱 Primeiros passos: HTML e CSS</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: O QUE É SER DEV ========== -->
+        <div id="what-is-dev" class="snap-section">
+            <div class="section-card">
+                <h2>🧠 O que é ser um Desenvolvedor Web?</h2>
+                <p style="margin-bottom: 1.2rem; color: var(--text-medium); line-height: 1.6;">Ser desenvolvedor não é "saber HTML de cor". <strong>É sobre resolver problemas</strong>. Transformar ideias em algo real que funciona no navegador.</p>
+
+                <div class="feature-card">
+                    <ul class="feature-list">
+                        <li>🔍 Quebra problemas grandes em pedaços pequenos</li>
+                        <li>📖 Pesquisa documentação o tempo todo (sim, até veteranos)</li>
+                        <li>🐛 Caça bugs com paciência e método</li>
+                        <li>🤝 Colabora com outros devs e designers</li>
+                    </ul>
+                </div>
+
+                <p style="color: var(--text-medium); line-height: 1.6; margin-top: 1.2rem;">
+                    Áreas: <strong>Front-end</strong> (parte visual), <strong>Back-end</strong> (bastidores, dados) ou <strong>Full Stack</strong> (ambos).<br><br>
+                    E o mais importante: <strong>qualquer pessoa pode aprender</strong>. Não é dom, é treino e persistência.
+                </p>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: PROGRAMAÇÃO É EXPERIMENTAL ========== -->
+        <div id="experimental" class="snap-section">
+            <div class="section-card">
+                <h2>🧪 Programação é experimental</h2>
+
+                <div class="feature-card">
+                    <ul class="feature-list">
+                        <li> <strong>Error-centric</strong> — o erro não interrompe o processo, ele <strong>faz parte</strong> dele</li>
+                        <li>Errar muitas vezes significa só que você tomou um caminho que não era o melhor pra resolver aquele problema. </li>
+                        <li> Sistemas complexos têm interações inesperadas. Não temos como prever tudo — então a gente aceita que erros vão acontecer, e aprende com eles.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: BOAS PRÁTICAS ========== -->
+        <div id="best-practices" class="snap-section">
+            <div class="section-card">
+                <h2>📐 Boas práticas e colaboração</h2>
+
+                <div class="feature-card">
+                    <p style="color: var(--text-medium); margin-bottom: 1rem;"><strong>Todo acordo de boas práticas de código tem dois objetivos:</strong></p>
+                    <ul class="feature-list">
+                        <li>1️⃣ Tornar mais difícil de erros acontecerem</li>
+                        <li>2️⃣ Unificar a estrutura do código — qualquer dev consegue investigar sem gastar semanas entendendo como a outra pessoa pensa</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <ul class="feature-list">
+                        <li>🤝 <strong>A área é profundamente colaborativa</strong> — a gente não escreve código bonito por estética. Escrevemos código limpo porque queremos que seja fácil de dar manutenção.</li>
+                        <li>🔍 Seguindo esses princípios, fica mais fácil até pra gente MESMO investigar os comportamentos inesperados do nosso próprio código.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: O ACORDO ========== -->
+        <div id="agreement" class="snap-section">
+            <div class="section-card">
+                <h2>🤝 O Acordo</h2>
+                <p style="color: var(--text-medium); margin-bottom: 1.5rem; line-height: 1.6;">Não são regras. São âncoras — pra quando a maré virar.</p>
+
+                <div class="agreement-card">
+                    <div class="agreement-grid">
+                        <div class="agreement-item">
+                            <span class="item-icon">🫂</span>
+                            <strong>Sintiu que não vai dar pé?</strong>
+                            <p>É comum. Busquem apoio — na equipe ou entre vocês. Ninguém precisa atravessar isso sozinho.</p>
+                        </div>
+                        <div class="agreement-item">
+                            <span class="item-icon">🔍</span>
+                            <strong>Erro não é fracasso.</strong>
+                            <p>Não é necessário decorar nada. Errar faz parte de programar. Pesquisem, tentem de novo, sigam em frente.</p>
+                        </div>
+                        <div class="agreement-item">
+                            <span class="item-icon">📧</span>
+                            <strong>Bater um desânimo?</strong>
+                            <p>Acionem a equipe: gerente de turma, tutor. Seja através 1:1 ou do Discord, ou até e-mail se necessário.</p>
+                        </div>
+                    </div>
+
+                    <div class="instructor-commitment">
+                        💬 "Sempre que o medo bater — e ele vai bater — lembrem-se: vocês estão aqui pra criar condições de mudar a vida de vocês. Lembra do sonho. E segue."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: IA ========== -->
+        <div id="ai" class="snap-section">
+            <div class="section-card">
+                <h2>🤖 E a IA?</h2>
+                <div class="ai-card">
+                    <p style="margin-bottom: 1rem; color: var(--text-medium);"><strong>A realidade:</strong> Sim, IA faz parte do mercado. É ferramenta, não é trapaça.</p>
+
+                    <div class="ai-highlight">
+                        <div class="ai-box good">
+                            <div class="box-icon">✅</div>
+                            <h4>Uso pontual (recomendado)</h4>
+                            <div class="ai-examples">
+                                "Qual a sintaxe das tags de link mesmo?"<br>
+                                "Por que o console tá me dando esse erro?"<br>
+                                "O que significa essa mensagem de erro?"
+                            </div>
+                        </div>
+                        <div class="ai-box bad">
+                            <div class="box-icon">❌</div>
+                            <h4>Projeto inteiro (prejudicial)</h4>
+                            <div class="ai-examples">
+                                <p>Colar código do projeto</p>
+                                "Faz esse projeto inteiro pra mim"<br>
+                                "Resolve todos os bugs sem eu olhar"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-analogy">
+                        <p style="font-weight: 600; margin-bottom: 0.5rem;">💪 Analogia da musculação:</p>
+                        <p><em>"Você fica forte vendo os outros malharem? Não. Você fica forte FAZENDO."</em></p>
+                        <p style="margin-top: 0.5rem;">Quando você manda seu projeto inteiro pra IA resolver, é isso que você está fazendo: assistindo alguém malhar no seu lugar. <strong>Se você não faz o exercício agora, na próxima sprint o peso vai ser maior — e seu corpo não vai estar pronto.</strong></p>
+                    </div>
+
+                    <div class="dot-info">
+                        🤖 <strong>Sobre a DOT (IA da TripleTen):</strong> Treinada pra te dar <strong>caminhos</strong>, não respostas prontas. Ainda assim: <strong>use com moderação</strong>. O aprendizado está em se perder um pouco, tentar, errar, e se encontrar de novo.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: FERRAMENTAS ========== -->
+        <div id="tools" class="snap-section">
+            <div class="section-card">
+                <h2>🛠️ Ferramentas do ofício</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>📝 VS Code</h3>
+                        <p style="color: var(--text-medium); font-size: 0.95rem; margin-bottom: 0.5rem;">Editor de código gratuito, moderno e usado por profissionais no mundo todo.</p>
+                        <div class="install-steps">
+                            <strong>🔧 Como instalar:</strong>
+                            <ol>
+                                <li>Acesse <a href="https://code.visualstudio.com" class="download-link" target="_blank">code.visualstudio.com</a></li>
+                                <li>Baixe a versão do seu sistema</li>
+                                <li>Instale com "próximo, próximo, concluir"</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="tool-card">
+                        <h3>💬 Discord</h3>
+                        <p style="color: var(--text-medium); font-size: 0.95rem; margin-bottom: 0.5rem;">Nossa base de comunicação: dúvidas, comunidade, avisos e apoio.</p>
+                        <div class="install-steps">
+                            <strong>🔧 Como instalar:</strong>
+                            <ol>
+                                <li>Acesse <a href="https://discord.com/download" class="download-link" target="_blank">discord.com/download</a></li>
+                                <li>Baixe e instale</li>
+                                <li>Crie sua conta gratuita</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: RECURSOS ÚTEIS ========== -->
+        <div id="resources" class="snap-section">
+            <div class="section-card">
+                <h2>🔗 Recursos úteis</h2>
+                <p style="color: var(--text-medium); margin-bottom: 0.5rem; line-height: 1.6;">Guarda esses links. Você vai voltar a eles centenas de vezes.</p>
+
+                <div class="resources-grid">
+                    <a href="https://tripleten.com/home/web/" target="_blank" class="resource-card featured">
+                        <div class="resource-icon">🎓</div>
+                        <div>
+                            <div class="resource-tag">Plataforma do curso</div>
+                            <h3>TripleTen</h3>
+                            <p>Aqui ficam seus projetos, sprints, feedbacks e todo o conteúdo do bootcamp.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://developer.mozilla.org/pt-BR/" target="_blank" class="resource-card">
+                        <div class="resource-tag">Referência técnica</div>
+                        <h3>📖 MDN Web Docs</h3>
+                        <p>A documentação oficial da web. Se tem dúvida sobre HTML, CSS ou JavaScript — a resposta está aqui.</p>
+                    </a>
+
+                    <a href="https://www.w3schools.com" target="_blank" class="resource-card">
+                        <div class="resource-tag">Consulta rápida</div>
+                        <h3>🏫 W3Schools</h3>
+                        <p>Ótimo pra consulta rápida e exemplos práticos de sintaxe. Mais direto ao ponto que o MDN.</p>
+                    </a>
+                </div>
+
+                <div class="study-tip" style="margin-top: 1.5rem;">
+                    💡 <strong>Regra prática:</strong> Dúvida de comportamento ou conceito → MDN. Dúvida de sintaxe rápida → W3Schools. Projeto e sprints → TripleTen.
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: HTML + CSS INTRO ========== -->
+        <div id="coding-intro" class="snap-section">
+            <div class="section-card">
+                <h2>🧱 Primeiros passos: HTML + CSS</h2>
+                <div class="analogy-box">
+                    <div class="analogy-item">
+                        <div class="analogy-icon">🦴</div>
+                        <div class="analogy-text">
+                            <strong>HTML = Esqueleto</strong>
+                            <p>A estrutura da página. Sem ele, o site não existe.</p>
+                        </div>
+                    </div>
+                    <div class="analogy-item">
+                        <div class="analogy-icon">💄</div>
+                        <div class="analogy-text">
+                            <strong>CSS = Pele / Aparência</strong>
+                            <p>Cores, fontes, layout. O que faz o site ficar bonito.</p>
+                        </div>
+                    </div>
+                    <div class="muscle-note">
+                        💪 "E os músculos?" — JavaScript. Movimento, interatividade. Veremos em breve.
+                    </div>
+                </div>
+
+                <p style="color: var(--text-medium); margin-top: 1.5rem; font-size: 1rem; line-height: 1.6;">
+                    🎯 A teoria acabou. Agora a gente abre o VS Code e escreve as primeiras linhas juntos.
+                </p>
+            </div>
+        </div>
+
+        <!-- ========== SLIDE: PRÓXIMA AULA ========== -->
+        <div id="next-class" class="snap-section">
+            <div class="section-card">
+                <span class="badge">✅ Isso foi tudo por hoje</span>
+                <h2>Próxima aula</h2>
+                <p style="color: var(--text-medium); margin-bottom: 1.5rem; line-height: 1.6;">Na próxima sessão, a gente vai falar em detalhes sobre o projeto — o que é, o que se espera de vocês, e como começar.</p>
+
+                <div class="next-class-card">
+                    <h3>📌 O que vem por aí</h3>
+                    <ul class="next-topics">
+                        <li>📁 Apresentação do projeto da sprint</li>
+                        <li>🗂️ Estrutura de arquivos e organização</li>
+                        <li>🏗️ Construindo as primeiras seções</li>
+                        <li>🎨 Aplicando estilos com CSS</li>
+                    </ul>
+
+                    <div class="booking-note">
+                        📅 <strong>Marque um 1:1 comigo.</strong> Se quiser conversar sobre o projeto antes de começar — ou revisar antes de enviar — é só me chamar no Discord ou agendar um horário. Pode ser até pra tirar dúvidas gerais, sem compromisso.
+                    </div>
+                </div>
+
+                <div class="secret-reveal">
+                    <div class="secret-label">✨ Segredo revelado</div>
+                    <p>
+                        <strong>Essa apresentação inteira foi construída com HTML e CSS.</strong><br><br>
+                        As mesmas ferramentas que vocês acabaram de conhecer hoje. Ela vai ficar disponível pra vocês explorarem o código — cada seção, cada estilo, cada detalhe. É um bom exercício: tenta entender o que cada parte faz.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

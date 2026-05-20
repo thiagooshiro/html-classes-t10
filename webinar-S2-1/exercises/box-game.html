@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="box-game.css">
+    <title>📦 Jogo das Caixas | Flexbox</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">📦 Jogo das Caixas</h1>
+        <p class="header__subtitle">cinco desafios. muitas caixas. um flex.</p>
+    </header>
+
+    <!-- =============================================
+         EXEMPLO — Cantinho dos Testes
+         ============================================= -->
+    <section class="stage stage--example">
+        <div class="stage__label">🎮 Cantinho dos Testes</div>
+        <h2 class="stage__title">Teste à vontade!</h2>
+        <p class="stage__description">Aqui você pode testar propriedades de Flexbox.</p>
+        <div class="arena arena--example">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         EXERCÍCIO 1 — gap
+         ============================================= -->
+    <section class="stage">
+        <div class="stage__label">Exercício 1</div>
+        <h2 class="stage__title">📌 Caixas grudadas</h2>
+        <p class="stage__description">As três caixas estão lado a lado, mas muito grudadas. Como dar um espaçamento entre elas?</p>
+        <div class="arena arena--ex1">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         EXERCÍCIO 2 — flex-direction: column
+         ============================================= -->
+    <section class="stage">
+        <div class="stage__label">Exercício 2</div>
+        <h2 class="stage__title">📌 Mudar a direção</h2>
+        <p class="stage__description">As duas caixas estão lado a lado. Como fazer elas ficarem uma em cima da outra?</p>
+        <div class="arena arena--ex2">
+            <div class="box">⬆️</div>
+            <div class="box">⬇️</div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         EXERCÍCIO 3 — flex-wrap
+         ============================================= -->
+    <section class="stage">
+        <div class="stage__label">Exercício 3</div>
+        <h2 class="stage__title">📌 Caixas que não cabem</h2>
+        <p class="stage__description">Temos quatro caixas, queremos criar duas colunas com duas caixas em cada, como fazer?</p>
+        <div class="arena arena--ex3">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         EXERCÍCIO 4 — justify-content
+         ============================================= -->
+    <section class="stage">
+        <div class="stage__label">Exercício 4</div>
+        <h2 class="stage__title">📌 Espalhar no espaço</h2>
+        <p class="stage__description">As quatro caixas estão todas coladas na esquerda. Como distribuir elas com espaços iguais entre si?</p>
+        <div class="arena arena--ex4">
+            <div class="box">A</div>
+            <div class="box">B</div>
+            <div class="box">C</div>
+            <div class="box">D</div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         EXERCÍCIO 5 — DESAFIO FINAL!
+         ============================================= -->
+    <section class="stage">
+        <div class="stage__label">🏆 DESAFIO FINAL</div>
+        <h2 class="stage__title">📌 Caixa dentro de outra caixa</h2>
+        <p class="stage__description">
+            Temos uma caixa roxa dentro da arena.<br>
+            Dentro da caixa roxa, tem uma caixinha dourada.<br><br>
+            <strong>Problema:</strong> a caixa roxa está no canto da arena, e a caixinha dourada está no canto da caixa roxa.<br><br>
+            Como fazer a caixa roxa ficar <strong>centralizada na arena</strong> E a caixinha dourada ficar <strong>centralizada dentro da caixa roxa</strong>?
+        </p>
+        <div class="arena arena--ex5">
+            <div class="box--outer">
+                <div class="box box--inner box--hidden">✨</div>
+            </div>
+        </div>
+        <div class="stage__hint">
+            💡 Pesquise sobre: justify-content, align-items.
+            <br>
+            💡 Lembre-se: quem centraliza um elemento é o CONTAINER dele.
+        </div>  
+    </section>
+    <button>Desaparecer desparecer caixa</button>
+    <script src="script.js"></script>
+</body>
+</html>
