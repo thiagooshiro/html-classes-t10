@@ -1,0 +1,41 @@
+.intro {
+    display: flex;
+    max-width: 984px;
+    flex-direction: column;
+}
+
+.intro__title {
+    max-width: 830px;
+}
+
+.intro__subtitle {
+    max-width: 738px;
+}
+
+.intro__text {
+    max-width: 722px;
+}
+
+.intro__author {
+    text-align: end;
+}
+
+
+@media screen and (max-width: 768px){
+    .intro {
+        max-width: 720px;
+    }
+
+    .intro__title {
+        max-width: 707px;
+    }
+
+    .intro__subtitle {
+        max-width: 720px;
+    }
+
+    .intro__text {
+        max-width: 720px;
+    }
+
+}

@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sprint 5 — Responsividade e Blocos CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0e0b;
+      --paper: #f5f0e8;
+      --accent: #d94f2b;
+      --accent2: #2b5fd9;
+      --muted: #7a756a;
+      --border: #c8c2b6;
+      --code-bg: #1a1814;
+      --code-text: #e8e2d4;
+      --mono: 'Space Mono', monospace;
+      --sans: 'Syne', sans-serif;
+      --max: 860px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav .nav-label {
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-right: auto;
+    }
+
+    nav a {
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+
+    nav a:hover { opacity: 1; }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero__tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #fff;
+      padding: 4px 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero__sub {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .hero__index {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .hero__index a {
+      font-family: var(--mono);
+      font-size: 12px;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      color: var(--ink);
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .hero__index a:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    /* ── SECTION HEADER ── */
+    .sec-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .sec-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+    }
+
+    .sec-header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── CONCEITO CARD ── */
+    .concept {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .concept::before {
+      content: attr(data-label);
+      position: absolute;
+      top: -1px;
+      right: 1.5rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent2);
+      color: #fff;
+      padding: 2px 8px;
+    }
+
+    .concept h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .concept p {
+      font-size: 15px;
+      color: #3a3630;
+      line-height: 1.6;
+    }
+
+    /* ── CODE BLOCK ── */
+    .code-wrap {
+      margin: 1.5rem 0;
+    }
+
+    .code-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      border-left: 3px solid var(--accent);
+    }
+
+    code {
+      font-family: var(--mono);
+      font-size: 13px;
+      background: #e8e2d4;
+      padding: 1px 5px;
+      color: var(--accent);
+    }
+
+    .hl-prop { color: #79b8ff; }
+    .hl-val  { color: #fdac67; }
+    .hl-sel  { color: #b5e4a8; }
+    .hl-com  { color: #6a7f6a; font-style: italic; }
+    .hl-unit { color: #ff9090; }
+    .hl-at   { color: #e891e8; }
+
+    /* ── DEMO BOXES ── */
+    .demo {
+      border: 1px dashed var(--border);
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      background: #faf7f2;
+    }
+
+    .demo-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    /* demo: display block vs inline */
+    .d-block-demo .box {
+      background: #2b5fd9;
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 12px;
+      margin-bottom: 4px;
+    }
+
+    .d-inline-demo .box {
+      display: inline;
+      background: #d94f2b;
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 8px;
+    }
+
+    .d-inlineblock-demo .box {
+      display: inline-block;
+      background: #1a7a4a;
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 12px;
+      width: 120px;
+      text-align: center;
+    }
+
+    /* demo: box model */
+    .boxmodel-demo {
+      position: relative;
+    }
+
+    .bm-margin {
+      background: #ffd9b0;
+      padding: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #7a4a10;
+      text-align: right;
+    }
+
+    .bm-border {
+      border: 8px solid #f0a050;
+      background: #ffe8cc;
+      padding: 16px;
+    }
+
+    .bm-padding {
+      background: #c2dff0;
+      padding: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #1a4a7a;
+    }
+
+    .bm-content {
+      background: #4a9fd4;
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .bm-labels {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .bm-labels span { display: flex; align-items: center; gap: 5px; }
+    .bm-labels span::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+    }
+
+    .bm-labels .l-margin::before { background: #ffd9b0; border: 1px solid #f0a050; }
+    .bm-labels .l-border::before { background: #f0a050; }
+    .bm-labels .l-padding::before { background: #c2dff0; }
+    .bm-labels .l-content::before { background: #4a9fd4; }
+
+    /* demo: media query */
+    .mq-demo {
+      resize: horizontal;
+      overflow: hidden;
+      min-width: 200px;
+      max-width: 100%;
+      border: 1px solid var(--border);
+      padding: 0;
+    }
+
+    .mq-inner {
+      padding: 1.25rem;
+    }
+
+    .mq-card {
+      background: var(--accent2);
+      color: #fff;
+      padding: 1rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    @media (max-width: 480px) {
+      .mq-card {
+        background: var(--accent);
+        font-size: 11px;
+      }
+    }
+
+    .mq-note {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* demo: unidades */
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+    }
+
+    .unit-card {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.75rem;
+    }
+
+    .unit-name {
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .unit-desc {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    .unit-example {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #fdac67;
+      margin-top: 6px;
+    }
+
+    /* ── CHECKLIST ── */
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+    }
+
+    .checklist li:last-child { border-bottom: none; }
+
+    .check-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      margin-top: 2px;
+    }
+
+    .check-icon.ok { background: var(--accent); border-color: var(--accent); }
+    .check-icon.ok::after {
+      content: '✓';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 12px;
+      height: 100%;
+    }
+
+    .checklist strong {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .checklist .sub {
+      font-size: 13px;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin-top: 2px;
+    }
+
+    /* ── ARMADILHA ── */
+    .trap {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      background: #fff5f3;
+      margin: 1.5rem 0;
+      font-size: 15px;
+    }
+
+    .trap-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── TIP ── */
+    .tip {
+      border-left: 3px solid var(--accent2);
+      padding: 1rem 1.25rem;
+      background: #f3f6ff;
+      margin: 1.5rem 0;
+      font-size: 15px;
+    }
+
+    .tip-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── PERGUNTA ── */
+    .pergunta {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .pergunta-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pergunta p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── UTILS ── */
+    .mt-1 { margin-top: 0.75rem; }
+    .mt-2 { margin-top: 1.5rem; }
+    p + p { margin-top: 0.75rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-label">Sprint 5</span>
+  <a href="#blocos">Blocos CSS</a>
+  <a href="#boxmodel">Box Model</a>
+  <a href="#unidades">Unidades</a>
+  <a href="#responsividade">Responsividade</a>
+  <a href="#checklist">Checklist</a>
+</nav>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="hero__tag">Sprint 5 · HTML &amp; CSS</div>
+    <h1>Responsividade<br>&amp; <em>Blocos CSS</em></h1>
+    <p class="hero__sub">
+      Tudo que você precisa saber pra o Projeto 5 não te surpreender na revisão.
+    </p>
+    <div class="hero__index">
+      <a href="#blocos">01 · Blocos CSS</a>
+      <a href="#boxmodel">02 · Box Model</a>
+      <a href="#unidades">03 · Unidades</a>
+      <a href="#responsividade">04 · Responsividade</a>
+      <a href="#mediaquery">05 · Media Queries</a>
+      <a href="#checklist">06 · Checklist P5</a>
+    </div>
+  </header>
+
+  <!-- ── 01 BLOCOS CSS ── -->
+  <section id="blocos">
+    <div class="sec-header">
+      <span class="sec-num">01 /</span>
+      <h2>Blocos CSS — display</h2>
+    </div>
+
+    <p>
+      Todo elemento HTML tem um comportamento padrão de layout. Esse comportamento é controlado
+      pela propriedade <code>display</code>. Entender os três valores principais é fundamental
+      antes de qualquer coisa.
+    </p>
+
+    <div class="concept" data-label="block">
+      <h3>display: block</h3>
+      <p>
+        Ocupa a largura inteira disponível. Empurra o próximo elemento pra baixo.
+        <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>,
+        <code>&lt;section&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code> são block por padrão.
+      </p>
+    </div>
+
+    <div class="concept" data-label="inline">
+      <h3>display: inline</h3>
+      <p>
+        Fica na mesma linha. Não aceita <code>width</code> nem <code>height</code>.
+        O padding e margin horizontais funcionam, mas os verticais não empurram outros elementos.
+        <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code> são inline por padrão.
+      </p>
+    </div>
+
+    <div class="concept" data-label="inline-block">
+      <h3>display: inline-block</h3>
+      <p>
+        Fica na mesma linha <em>e</em> aceita <code>width</code>, <code>height</code>, padding e margin.
+        O melhor dos dois mundos quando você quer elementos lado a lado com tamanho controlado.
+      </p>
+    </div>
+
+    <div class="demo">
+      <div class="demo-label">Visualização — block</div>
+      <div class="d-block-demo">
+        <div class="box">elemento block</div>
+        <div class="box">outro elemento block</div>
+        <div class="box">mais um block</div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-label">Visualização — inline</div>
+      <div class="d-inline-demo">
+        <div class="box">inline</div>
+        <div class="box">inline</div>
+        <div class="box">inline</div>
+        <div class="box">inline</div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-label">Visualização — inline-block (width: 120px em cada)</div>
+      <div class="d-inlineblock-demo">
+        <div class="box">inline-block</div>
+        <div class="box">inline-block</div>
+        <div class="box">inline-block</div>
+      </div>
+    </div>
+
+    <div class="trap">
+      <div class="trap-label">⚠ armadilha clássica</div>
+      Elementos <code>inline</code> ignoram <code>width</code> e <code>height</code>.
+      Se você colocar essas propriedades num <code>&lt;span&gt;</code> sem mudar o display,
+      não vai acontecer nada e você vai passar 40 minutos sem entender por quê.
+    </div>
+
+    <div class="pergunta">
+      <div class="pergunta-label">pergunta pra reflexão</div>
+      <p>
+        Por que o checklist do P5 diz que elementos não devem ser agrupados em <code>&lt;div&gt;</code>
+        sem necessidade de alinhamento? O que seria uma necessidade legítima?
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 02 BOX MODEL ── -->
+  <section id="boxmodel">
+    <div class="sec-header">
+      <span class="sec-num">02 /</span>
+      <h2>Box Model</h2>
+    </div>
+
+    <p>
+      Todo elemento block é uma caixa formada por quatro camadas.
+      Entender onde cada uma termina e começa é o que separa quem
+      "vai no chute" de quem controla o layout de verdade.
+    </p>
+
+    <div class="demo">
+      <div class="demo-label">Box model visual</div>
+      <div class="boxmodel-demo">
+        <div class="bm-margin">
+          margin
+          <div class="bm-border">
+            <div class="bm-padding">
+              padding
+              <div class="bm-content">content</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bm-labels">
+        <span class="l-margin">margin</span>
+        <span class="l-border">border</span>
+        <span class="l-padding">padding</span>
+        <span class="l-content">content</span>
+      </div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label">Exemplo</div>
+      <pre><span class="hl-sel">.card</span> {
+  <span class="hl-prop">width</span>: <span class="hl-val">300px</span>;        <span class="hl-com">/* largura do content */</span>
+  <span class="hl-prop">padding</span>: <span class="hl-val">20px</span>;       <span class="hl-com">/* espaço interno */</span>
+  <span class="hl-prop">border</span>: <span class="hl-val">2px solid #000</span>;
+  <span class="hl-prop">margin</span>: <span class="hl-val">16px 0</span>;       <span class="hl-com">/* espaço externo */</span>
+}
+
+<span class="hl-com">/* sem box-sizing: largura real = 300 + 40 + 4 = 344px */</span>
+<span class="hl-com">/* com box-sizing: border-box → largura real = 300px */</span></pre>
+    </div>
+
+    <div class="concept" data-label="crucial">
+      <h3>box-sizing: border-box</h3>
+      <p>
+        Com <code>border-box</code>, o <code>width</code> que você define
+        <strong>já inclui</strong> padding e border. Sem ele, o elemento cresce além do que você
+        esperava. O checklist do P5 tolera apenas 30px de diferença em 1280px — sem
+        <code>border-box</code> você vai errar isso.
+      </p>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label">Reset recomendado</div>
+      <pre><span class="hl-sel">*</span>,
+<span class="hl-sel">*::before</span>,
+<span class="hl-sel">*::after</span> {
+  <span class="hl-prop">box-sizing</span>: <span class="hl-val">border-box</span>;
+}</pre>
+    </div>
+
+    <div class="trap">
+      <div class="trap-label">⚠ armadilha clássica</div>
+      O checklist rejeita o uso de <code>margin</code> negativo. Se você está usando margin negativo
+      pra corrigir algum desalinhamento, é sinal de que o problema está em outro lugar — geralmente
+      no box model ou em padding acumulado.
+    </div>
+
+    <div class="pergunta">
+      <div class="pergunta-label">pergunta pra reflexão</div>
+      <p>
+        O design original mostra uma seção com 24px de espaço entre o texto e a borda.
+        Você coloca <code>padding: 24px</code>, mas o elemento fica maior do que no design.
+        O que provavelmente está faltando?
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 03 UNIDADES ── -->
+  <section id="unidades">
+    <div class="sec-header">
+      <span class="sec-num">03 /</span>
+      <h2>Unidades CSS</h2>
+    </div>
+
+    <p>
+      Escolher a unidade errada é uma das causas mais comuns de layout quebrado
+      em tamanhos de tela diferentes. Aqui estão as que você vai usar no P5:
+    </p>
+
+    <div class="units-grid mt-2">
+      <div class="unit-card">
+        <div class="unit-name">px</div>
+        <div class="unit-desc">Pixel absoluto. Fixo, não escala.</div>
+        <div class="unit-example">border: 1px solid</div>
+      </div>
+      <div class="unit-card">
+        <div class="unit-name">%</div>
+        <div class="unit-desc">Relativo ao elemento pai.</div>
+        <div class="unit-example">width: 100%</div>
+      </div>
+      <div class="unit-card">
+        <div class="unit-name">rem</div>
+        <div class="unit-desc">Relativo ao font-size do &lt;html&gt;. Geralmente 16px.</div>
+        <div class="unit-example">font-size: 1.5rem</div>
+      </div>
+      <div class="unit-card">
+        <div class="unit-name">em</div>
+        <div class="unit-desc">Relativo ao font-size do elemento pai. Cuidado com encadeamento.</div>
+        <div class="unit-example">padding: 1.2em</div>
+      </div>
+      <div class="unit-card">
+        <div class="unit-name">vw</div>
+        <div class="unit-desc">1% da largura da viewport. Útil pra tipografia fluida.</div>
+        <div class="unit-example">font-size: 5vw</div>
+      </div>
+      <div class="unit-card">
+        <div class="unit-name">vh</div>
+        <div class="unit-desc">1% da altura da viewport. Útil pra seções full-screen.</div>
+        <div class="unit-example">height: 100vh</div>
+      </div>
+    </div>
+
+    <div class="tip mt-2">
+      <div class="tip-label">💡 regra prática</div>
+      Bordas e sombras → <code>px</code>. Fontes → <code>rem</code>.
+      Larguras de container → <code>%</code> ou <code>px</code> com <code>max-width</code>.
+      Altura de elementos de texto → nunca fixe em <code>px</code> (o checklist rejeita isso).
+    </div>
+
+    <div class="trap">
+      <div class="trap-label">⚠ armadilha do checklist</div>
+      O P5 rejeita explicitamente elementos de texto com <strong>altura fixa</strong>.
+      Nunca coloque <code>height: 40px</code> num parágrafo ou título — o texto vai vazar
+      quando o conteúdo crescer.
+    </div>
+  </section>
+
+  <!-- ── 04 RESPONSIVIDADE ── -->
+  <section id="responsividade">
+    <div class="sec-header">
+      <span class="sec-num">04 /</span>
+      <h2>Responsividade</h2>
+    </div>
+
+    <p>
+      Layout responsivo significa que o design se adapta a diferentes tamanhos de tela
+      sem quebrar. No P5, você vai precisar que tudo funcione corretamente em
+      três breakpoints: <code>1280px</code>, <code>768px</code> e <code>320px</code>.
+    </p>
+
+    <div class="concept" data-label="estratégia">
+      <h3>Mobile-first vs Desktop-first</h3>
+      <p>
+        <strong>Mobile-first:</strong> você escreve os estilos base para telas pequenas
+        e usa <code>min-width</code> para adicionar estilos conforme a tela cresce.<br/>
+        <strong>Desktop-first:</strong> o contrário — estilos base pra tela grande,
+        <code>max-width</code> para adaptar em telas menores.<br/>
+        O P5 parte de um design desktop, então desktop-first costuma ser mais direto aqui.
+      </p>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label">Desktop-first — exemplo</div>
+      <pre><span class="hl-sel">.lead__title</span> {
+  <span class="hl-prop">font-size</span>: <span class="hl-val">56px</span>;     <span class="hl-com">/* desktop: 1280px */</span>
+}
+
+<span class="hl-at">@media</span> (<span class="hl-prop">max-width</span>: <span class="hl-unit">768px</span>) {
+  <span class="hl-sel">.lead__title</span> {
+    <span class="hl-prop">font-size</span>: <span class="hl-val">40px</span>;   <span class="hl-com">/* tablet */</span>
+  }
+}
+
+<span class="hl-at">@media</span> (<span class="hl-prop">max-width</span>: <span class="hl-unit">320px</span>) {
+  <span class="hl-sel">.lead__title</span> {
+    <span class="hl-prop">font-size</span>: <span class="hl-val">28px</span>;   <span class="hl-com">/* mobile */</span>
+  }
+}</pre>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">💡 sobre o checklist</div>
+      O checklist permite até <strong>30px de diferença</strong> em 1280px e até <strong>10px</strong>
+      em 768px e 320px. Isso significa que 768px e mobile são mais exigentes — dê atenção especial
+      a eles.
+    </div>
+
+    <div class="trap">
+      <div class="trap-label">⚠ armadilha clássica</div>
+      Nunca duplique declarações entre media queries. Se <code>.section</code> tem
+      <code>padding: 80px</code> no desktop e <code>padding: 40px</code> no mobile,
+      coloque só a diferença dentro do <code>@media</code>, não o bloco inteiro.
+      O checklist rejeita duplicação entre at-rules.
+    </div>
+  </section>
+
+  <!-- ── 05 MEDIA QUERIES ── -->
+  <section id="mediaquery">
+    <div class="sec-header">
+      <span class="sec-num">05 /</span>
+      <h2>Media Queries</h2>
+    </div>
+
+    <p>
+      Media queries são a ferramenta que torna o CSS responsivo. Elas aplicam
+      estilos condicionalmente, dependendo das características da tela.
+    </p>
+
+    <div class="code-wrap">
+      <div class="code-label">Sintaxe básica</div>
+      <pre><span class="hl-at">@media</span> (<span class="hl-prop">max-width</span>: <span class="hl-unit">768px</span>) {
+  <span class="hl-com">/* estilos aplicados quando a tela tem até 768px */</span>
+  <span class="hl-sel">.container</span> {
+    <span class="hl-prop">padding</span>: <span class="hl-val">0 16px</span>;
+  }
+}
+
+<span class="hl-at">@media</span> (<span class="hl-prop">min-width</span>: <span class="hl-unit">769px</span>) {
+  <span class="hl-com">/* estilos aplicados quando a tela tem pelo menos 769px */</span>
+}</pre>
+    </div>
+
+    <div class="demo">
+      <div class="demo-label">
+        Demo interativa — redimensione a caixa arrastando o canto inferior direito
+      </div>
+      <div class="mq-demo">
+        <div class="mq-inner">
+          <div class="mq-card">
+            Este bloco muda de cor abaixo de 480px
+          </div>
+          <p class="mq-note">azul = acima de 480px &nbsp;·&nbsp; vermelho = abaixo de 480px</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label">Como esse demo funciona</div>
+      <pre><span class="hl-sel">.mq-card</span> {
+  <span class="hl-prop">background</span>: <span class="hl-val">blue</span>;
+}
+
+<span class="hl-at">@media</span> (<span class="hl-prop">max-width</span>: <span class="hl-unit">480px</span>) {
+  <span class="hl-sel">.mq-card</span> {
+    <span class="hl-prop">background</span>: <span class="hl-val">red</span>;  <span class="hl-com">/* só a diferença */</span>
+  }
+}</pre>
+    </div>
+
+    <div class="concept" data-label="ordem importa">
+      <h3>A ordem das media queries importa</h3>
+      <p>
+        No desktop-first, as media queries com <code>max-width</code> menores devem
+        vir depois no arquivo — elas sobrescrevem estilos anteriores.
+        Se você colocar <code>max-width: 320px</code> antes de <code>max-width: 768px</code>,
+        o 768px vai sobrescrever o 320px em algumas resoluções.
+      </p>
+    </div>
+
+    <div class="pergunta">
+      <div class="pergunta-label">pergunta pra reflexão</div>
+      <p>
+        Você tem <code>.section { padding: 80px 40px }</code> e precisa que em 768px
+        o padding seja <code>48px 24px</code> e em 320px seja <code>32px 16px</code>.
+        Quantas declarações CSS você precisa no total? Onde cada uma vai?
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 06 CHECKLIST ── -->
+  <section id="checklist">
+    <div class="sec-header">
+      <span class="sec-num">06 /</span>
+      <h2>Checklist do Projeto 5</h2>
+    </div>
+
+    <p>Os pontos de rejeição imediata que você precisa garantir antes de submeter:</p>
+
+    <ul class="checklist mt-2">
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Media queries implementadas</strong>
+          <div class="sub">sem @media = rejeição automática</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Layout responsivo funciona em 1280px, 768px e 320px</strong>
+          <div class="sub">tolerância: 30px em 1280px · 10px em 768px e 320px</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Nenhum texto ultrapassa o bloco pai</strong>
+          <div class="sub">overflow de texto é rejeição imediata</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Sem scrollbar horizontal</strong>
+          <div class="sub">teste redimensionando a janela devagar</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Elementos de texto sem altura fixa</strong>
+          <div class="sub">cinco ou mais elementos com height fixo = rejeição</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Sem duplicação de estilos entre media queries</strong>
+          <div class="sub">cada @media só declara o que muda</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>BEM correto — sem números nos nomes de classe</strong>
+          <div class="sub">block__element1 ou block__element-one são erros</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>max-width definido para o conteúdo</strong>
+          <div class="sub">de acordo com o design</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Fonte Inter configurada com alternativas de sistema</strong>
+          <div class="sub">font-family: 'Inter', Arial, sans-serif</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip mt-2">
+      <div class="tip-label">💡 fluxo de revisão</div>
+      Antes de submeter: abre o DevTools, vai em responsive mode e arrasta a largura
+      de 1280px até 320px devagar. Se o layout quebrar em qualquer ponto, você encontrou
+      um problema que a revisão também vai encontrar.
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Sprint 5 · HTML &amp; CSS · TripleTen Brasil
+</footer>
+
+</body>
+</html>

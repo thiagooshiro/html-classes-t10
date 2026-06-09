@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula — Formulários e Responsividade</title>
+    <link rel="stylesheet" href="aula.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <p class="header__eyebrow">Around the U.S. — sprint atual</p>
+        <h1 class="header__title">Formulários e Responsividade</h1>
+        <nav class="tabs" role="tablist">
+          <button class="tab tab--active" data-tab="forms" role="tab" aria-selected="true">Formulários</button>
+          <button class="tab" data-tab="responsive" role="tab" aria-selected="false">Responsividade</button>
+        </nav>
+      </header>
+
+      <main class="content">
+
+        <!-- ===================== FORMULÁRIOS ===================== -->
+        <section id="tab-forms" class="tab-content tab-content--active">
+
+          <div class="section">
+            <h2 class="section__title">O que é um formulário HTML</h2>
+            <div class="card">
+              <p>Um formulário é um canal de comunicação entre o usuário e a aplicação. No projeto você tem dois: <code>edit-profile-form</code> (editar perfil) e <code>new-card-form</code> (criar novo local).</p>
+              <div class="highlight">
+                <p>A tag <code>&lt;form&gt;</code> agrupa inputs relacionados e define <em>onde</em> e <em>como</em> os dados serão enviados.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <p class="label">Anatomia do formulário no projeto</p>
+              <div class="two-col">
+                <div>
+                  <p class="col-title">edit-profile-form</p>
+                  <ul class="field-list">
+                    <li><code>input</code> nome</li>
+                    <li><code>input</code> sobre mim</li>
+                    <li><code>button[type=submit]</code> Salvar</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="col-title">new-card-form</p>
+                  <ul class="field-list">
+                    <li><code>input</code> título</li>
+                    <li><code>input[type=url]</code> link da imagem</li>
+                    <li><code>button[type=submit]</code> Criar</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section__title">Atributos importantes dos inputs</h2>
+
+            <div class="card">
+              <p class="label">type</p>
+              <p>Define o comportamento do campo. No projeto você tem <code>type="text"</code> e <code>type="url"</code>. O <code>type="url"</code> já faz validação básica de URL nativamente — o browser rejeita o submit se o valor não começar com <code>http://</code> ou <code>https://</code>.</p>
+              <div class="tags">
+                <span class="tag">text</span>
+                <span class="tag">url</span>
+                <span class="tag">email</span>
+                <span class="tag">password</span>
+                <span class="tag">number</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <p class="label">name</p>
+              <p>É como o JS (e o backend) vai identificar o campo. No projeto: <code>name="name"</code>, <code>name="description"</code>, <code>name="place-name"</code>, <code>name="link"</code>. Sem <code>name</code>, o dado não é incluído no submit.</p>
+            </div>
+
+            <div class="card">
+              <p class="label">placeholder</p>
+              <p>Texto de dica que aparece quando o campo está vazio. Desaparece quando o usuário começa a digitar. <strong>Não substitui label</strong> — é só uma dica visual.</p>
+              <div class="highlight highlight--warn">
+                <p>O projeto usa placeholder como substituto de label. Funcionalmente ok, mas acessibilidade fica comprometida — leitores de tela têm dificuldade. Em projetos reais, use <code>&lt;label&gt;</code>.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <p class="label">required</p>
+              <p>Impede o submit se o campo estiver vazio. No projeto, os campos do <code>new-card-form</code> têm <code>required</code>, os do <code>edit-profile-form</code> não têm. Percebeu a diferença de comportamento?</p>
+              <div class="tags">
+                <span class="tag tag--success">validação nativa</span>
+                <span class="tag">sem JS necessário</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section__title">O evento submit</h2>
+            <div class="card">
+              <p>Quando o usuário clica no <code>button[type=submit]</code>, o formulário dispara o evento <code>submit</code>. O comportamento padrão do browser é recarregar a página — em SPAs você sempre previne isso:</p>
+              <pre class="code-block"><span class="c">// captura o formulário pelo id</span>
+const form = document.getElementById(<span class="s">'edit-profile-form'</span>)
+
+form.addEventListener(<span class="s">'submit'</span>, (event) => {
+  event.preventDefault() <span class="c">// impede o reload</span>
+  <span class="c">// lê os valores</span>
+  const name = form.querySelector(<span class="s">'[name="name"]'</span>).value
+})</pre>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section__title">Formulário dentro de popup</h2>
+            <div class="card">
+              <p>No projeto os formulários vivem dentro de <code>.popup</code>. Isso é um padrão comum — o formulário não está visível o tempo todo, é exibido via JS quando o usuário clica num botão.</p>
+              <div class="highlight">
+                <p>O popup em si é um <code>div</code> com <code>display: none</code> no CSS. Quando o botão de editar é clicado, o JS adiciona uma classe que muda para <code>display: flex</code> ou <code>display: block</code>.</p>
+              </div>
+              <p>O formulário e o popup são responsabilidades separadas: o popup controla a <em>visibilidade</em>, o formulário controla os <em>dados</em>.</p>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ===================== RESPONSIVIDADE ===================== -->
+        <section id="tab-responsive" class="tab-content">
+
+          <div class="section">
+            <h2 class="section__title">O que é responsividade</h2>
+            <div class="card">
+              <p>Responsividade é a capacidade do layout se adaptar a diferentes tamanhos de tela sem quebrar. O projeto roda em desktop, tablet e mobile — o mesmo HTML, comportamentos visuais diferentes.</p>
+              <div class="highlight">
+                <p>A linha mais importante do projeto pra responsividade nem está no CSS — está no HTML:</p>
+                <pre class="code-block code-block--inline">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+                <p class="note">Sem isso, mobile renderiza a página no tamanho de desktop e diminui tudo. Com isso, o browser usa a largura real do dispositivo.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section__title">Media queries</h2>
+            <div class="card">
+              <p>Media queries são condições CSS. "Se a tela for menor que X, aplica essas regras."</p>
+              <pre class="code-block"><span class="c">/* layout padrão — desktop */</span>
+.cards__list {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+<span class="c">/* tela menor que 768px — tablet/mobile */</span>
+@media (max-width: 768px) {
+  .cards__list {
+    grid-template-columns: 1fr;
+  }
+}</pre>
+            </div>
+
+            <div class="card">
+              <p class="label">Breakpoints comuns</p>
+              <div class="two-col">
+                <div>
+                  <ul class="field-list">
+                    <li><code>320px</code> — mobile pequeno</li>
+                    <li><code>480px</code> — mobile grande</li>
+                    <li><code>768px</code> — tablet</li>
+                  </ul>
+                </div>
+                <div>
+                  <ul class="field-list">
+                    <li><code>1024px</code> — desktop pequeno</li>
+                    <li><code>1280px</code> — desktop</li>
+                    <li><code>1440px</code> — desktop grande</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="note">No projeto Around the U.S., o breakpoint principal costuma ser em torno de 768px — onde o layout de cards e o perfil mudam de horizontal pra vertical.</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section__title">Mobile-first vs desktop-first</h2>
+            <div class="card">
+              <div class="two-col two-col--bordered">
+                <div>
+                  <p class="col-title">Desktop-first</p>
+                  <p>Escreve o layout desktop no CSS base, usa <code>max-width</code> pra adaptar pra telas menores.</p>
+                  <span class="tag tag--warn">mais comum em projetos legados</span>
+                </div>
+                <div>
+                  <p class="col-title">Mobile-first</p>
+                  <p>Escreve o layout mobile no CSS base, usa <code>min-width</code> pra expandir pra telas maiores.</p>
+                  <span class="tag tag--success">recomendado hoje</span>
+                </div>
+              </div>
+              <div class="highlight highlight--warn" style="margin-top: 1rem;">
+                <p>O projeto Around the U.S. foi projetado desktop-first — você vai encontrar <code>max-width</code> nas media queries.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section__title">Elementos que mais mudam em mobile</h2>
+            <div class="card">
+              <p class="col-title">No projeto especificamente:</p>
+              <div class="tags" style="margin-top: 0.5rem;">
+                <span class="tag">.profile</span>
+                <span class="tag">.cards__list</span>
+                <span class="tag">.page__content</span>
+                <span class="tag">.popup__content</span>
+                <span class="tag">.profile__title</span>
+              </div>
+              <ul class="field-list" style="margin-top: 1rem;">
+                <li><code>.profile</code> — vira coluna em vez de linha</li>
+                <li><code>.cards__list</code> — de grid multi-coluna pra coluna única</li>
+                <li><code>.page__content</code> — padding lateral reduz</li>
+                <li><code>.popup__content</code> — largura máxima vira 100%</li>
+                <li><code>.profile__title</code> — font-size diminui</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section__title">Unidades responsivas</h2>
+            <div class="card">
+              <div class="two-col two-col--bordered">
+                <div>
+                  <p class="col-title">Relativas — se adaptam</p>
+                  <ul class="field-list">
+                    <li><code>%</code> — relativo ao pai</li>
+                    <li><code>vw / vh</code> — relativo à viewport</li>
+                    <li><code>rem</code> — relativo ao root (16px)</li>
+                    <li><code>em</code> — relativo ao elemento pai</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="col-title">Absolutas — não se adaptam</p>
+                  <ul class="field-list">
+                    <li><code>px</code> — pixel fixo</li>
+                    <li>Use pra bordas, gaps internos, font-size fixo.</li>
+                    <li>Evite pra larguras de container.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.tab;
+
+          tabs.forEach(t => { t.classList.remove('tab--active'); t.setAttribute('aria-selected', 'false'); });
+          contents.forEach(c => c.classList.remove('tab-content--active'));
+
+          tab.classList.add('tab--active');
+          tab.setAttribute('aria-selected', 'true');
+          document.getElementById('tab-' + target).classList.add('tab-content--active');
+        });
+      });
+    </script>
+  </body>
+</html>
