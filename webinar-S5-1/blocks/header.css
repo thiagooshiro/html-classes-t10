@@ -7,6 +7,8 @@
 
 .header__logo {
     max-width: 254px;
+
+    margin: 30px 0 90px;
 }
 
 .header__lead {
@@ -17,9 +19,20 @@
 }
 
 .header__title {
-    max-width: 720px;
+    max-width: 760px;
     line-height: 100px;
     font-size: 96px;
+    margin: 0 0 32px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 0;
+}
+
+.header__subtitle {
+    max-width: 720px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
 }
 
 .header__image {
