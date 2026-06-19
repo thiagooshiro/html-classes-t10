@@ -1,0 +1,441 @@
+/* ── Reset e base ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f0f2f5;
+    padding: 2rem 1.5rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-header {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-weight: 300;
+    font-size: 2.2rem;
+    color: #1a1a2e;
+    letter-spacing: -0.5px;
+}
+
+.page-header p {
+    color: #6c757d;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+}
+
+.page-header .badge-demo {
+    display: inline-block;
+    background: #dee2e6;
+    padding: 0.2rem 1rem;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-top: 0.5rem;
+}
+
+/* ─── GRID DO ÁLBUM ─── */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+/* ─── CADA CARD ─── */
+.photo-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: relative;
+}
+
+.photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.10);
+}
+
+/* ── Imagem ── */
+.photo-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: #adb5bd;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Cores temáticas para cada imagem */
+.photo-card:nth-child(1) .photo-img {
+    background: linear-gradient(145deg, #fddb92, #d1fdff);
+}
+.photo-card:nth-child(2) .photo-img {
+    background: linear-gradient(145deg, #a1c4fd, #c2e9fb);
+}
+.photo-card:nth-child(3) .photo-img {
+    background: linear-gradient(145deg, #fbc2eb, #a6c1ee);
+}
+.photo-card:nth-child(4) .photo-img {
+    background: linear-gradient(145deg, #f6d5f7, #fbe9d7);
+}
+.photo-card:nth-child(5) .photo-img {
+    background: linear-gradient(145deg, #b8cbb8, #b6d0d4);
+}
+.photo-card:nth-child(6) .photo-img {
+    background: linear-gradient(145deg, #f7d794, #f5cd79);
+}
+
+/* ── Conteúdo do card ── */
+.photo-content {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: #ffffff;
+    flex: 1;
+}
+
+.photo-content .title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    letter-spacing: -0.3px;
+}
+
+.photo-content .desc {
+    font-size: 0.9rem;
+    color: #495057;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+/* Tags (badges) */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.tags .tag {
+    background: #e9ecef;
+    padding: 0.2rem 0.7rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.photo-content .date {
+    font-size: 0.75rem;
+    color: #adb5bd;
+    margin-top: 6px;
+    align-self: flex-start;
+}
+
+/* ─── RESPONSIVIDADE ─── */
+
+/* Tablet: 2 colunas, mantém estrutura */
+@media (max-width: 900px) {
+    .album-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .photo-content .title {
+        font-size: 1rem;
+    }
+    .photo-content .desc {
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile: 1 coluna, MUDANÇA RADICAL no layout e na ordem */
+@media (max-width: 650px) {
+    .album-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* ── REORDENAÇÃO DOS CARDS ── */
+    /* Usamos order para alterar a sequência visual no mobile */
+    .photo-card:nth-child(1) {
+        order: 6;
+    }
+    /* card 1 vai para o final */
+    .photo-card:nth-child(2) {
+        order: 1;
+    }
+    .photo-card:nth-child(3) {
+        order: 2;
+    }
+    .photo-card:nth-child(4) {
+        order: 3;
+    }
+    .photo-card:nth-child(5) {
+        order: 4;
+    }
+    .photo-card:nth-child(6) {
+        order: 5;
+    }
+
+    /* ── MUDANÇA NO LAYOUT INTERNO DO CARD ── */
+    .photo-card {
+        border-radius: 16px;
+        overflow: hidden;
+        /* Remove o hover que pode atrapalhar no toque */
+        transition: none;
+    }
+    .photo-card:hover {
+        transform: none;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    /* A imagem passa a ocupar todo o card (como fundo) */
+    .photo-img {
+        aspect-ratio: 16 / 9;
+        /* mais horizontal */
+        font-size: 2.8rem;
+        /* ícone menor */
+        position: relative;
+        /* será o fundo */
+        background-size: cover;
+        background-position: center;
+        /* manter gradiente */
+        min-height: 180px;
+    }
+
+    /* O conteúdo vira sobreposição absoluta */
+    .photo-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 16px 16px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+        color: white;
+        gap: 4px;
+        border-radius: 0 0 16px 16px;
+        /* z-index para ficar acima */
+        z-index: 2;
+        pointer-events: none;
+        /* para não atrapalhar toques, mas se quiser pode manter */
+    }
+
+    /* Título sobreposto com destaque */
+    .photo-content .title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        letter-spacing: -0.2px;
+        margin-bottom: 2px;
+    }
+
+    /* Descrição mais clara, com sombra */
+    .photo-content .desc {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.85);
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        margin-bottom: 2px;
+    }
+
+    /* ── TAGS OCULTAS no mobile ── */
+    .tags {
+        display: none;
+    }
+
+    /* Data permanece, mas com estilo adaptado */
+    .photo-content .date {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.7);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        margin-top: 2px;
+        align-self: flex-start;
+    }
+
+    /* Ajuste nos cards para que a imagem seja o fundo */
+    .photo-card {
+        position: relative;
+        background: #1a1a2e;
+        /* fallback */
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Para garantir que a imagem cubra, usamos pseudo ou background-image? 
+            Como mantivemos o div .photo-img com gradiente, podemos fazer com que 
+            ele se estenda a todo o card com position: absolute, mas isso quebraria 
+            o aspect-ratio. Em vez disso, podemos definir .photo-img com position: 
+            relative e height: 100%? 
+            Mais simples: manter .photo-img como block normal, e o .photo-content 
+            absoluto sobre ele. O .photo-img terá altura definida (aspect-ratio) e 
+            será o fundo. O conteúdo ficará sobreposto. 
+            Vamos ajustar: .photo-img terá height: 100% do card? 
+            Para que o card tenha altura fixa, podemos definir altura mínima.
+        */
+    .photo-card {
+        display: flex;
+        flex-direction: column;
+        /* mantém */
+        height: auto;
+        /* mas queremos que a imagem ocupe todo o espaço */
+    }
+
+    /* Solução: fazer .photo-img ocupar todo o card com position: absolute, 
+            e o .photo-content sobreposto. Para isso, .photo-card deve ter 
+            position: relative e uma altura definida (por exemplo, 220px) 
+            ou usar aspect-ratio no card. 
+            Vou definir .photo-card com aspect-ratio: 16/9 e position: relative, 
+            e .photo-img com position: absolute, top:0, left:0, width:100%, height:100%.
+            Isso resolve. */
+    .photo-card {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        /* altura definida pela largura */
+        background: #1a1a2e;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: unset;
+        /* remove o aspect-ratio fixo */
+        font-size: 3rem;
+        /* ícone centralizado */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+        /* manter gradiente */
+        z-index: 1;
+    }
+
+    .photo-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 16px 16px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+        color: white;
+        z-index: 2;
+        pointer-events: none;
+        border-radius: 0;
+        /* já tem no card */
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    /* Ajuste para o título não quebrar muito */
+    .photo-content .title {
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+
+    .photo-content .desc {
+        font-size: 0.8rem;
+        opacity: 0.9;
+    }
+
+    /* Data no canto inferior direito? Vamos deixar alinhada à esquerda */
+    .photo-content .date {
+        margin-top: 4px;
+        font-size: 0.7rem;
+    }
+
+    /* Ocultar tags já está feito */
+}
+
+/* Ajuste fino para telas muito pequenas */
+@media (max-width: 400px) {
+    .photo-card {
+        aspect-ratio: 4 / 3;
+    }
+    .photo-content .title {
+        font-size: 1rem;
+    }
+    .photo-content .desc {
+        font-size: 0.7rem;
+    }
+}
+
+/* ─── INFO EXTRA ─── */
+.info-bar {
+    margin-top: 2.5rem;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem 1.8rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+    border-radius: 60px;
+    font-size: 0.85rem;
+    color: #343a40;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+}
+
+.info-bar strong {
+    color: #1a1a2e;
+}
+.info-bar .tag {
+    background: #dee2e6;
+    padding: 0.1rem 0.8rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: #212529;
+}
+@media (max-width: 650px) {
+    .info-bar {
+        flex-direction: column;
+        align-items: center;
+        border-radius: 30px;
+        padding: 0.8rem 1rem;
+        font-size: 0.75rem;
+        gap: 0.3rem;
+    }
+}

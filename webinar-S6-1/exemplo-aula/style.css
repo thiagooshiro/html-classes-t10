@@ -1,0 +1,236 @@
+:root {
+  --bg: #16181d;
+  --bg-card: #1e2128;
+  --bg-card-alt: #22262e;
+  --border: #2c3038;
+  --text: #e8e6e1;
+  --text-dim: #9a9a95;
+  --amber: #f0a830;
+  --amber-dim: #8a6420;
+  --flex-color: #6fb3d8;
+  --grid-color: #f0a830;
+  --danger: #d8745f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0 0 80px;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-top: 56px;
+  margin-bottom: 8px;
+  border-left: 3px solid var(--amber);
+  padding-left: 12px;
+}
+
+p {
+  color: var(--text-dim);
+  max-width: 70ch;
+}
+
+.callout {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 16px 0 32px;
+  color: var(--text);
+}
+
+.callout strong { color: var(--amber); }
+
+/* ----- Controles interativos ----- */
+.controls {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 200px;
+}
+
+.control-group label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.control-group output {
+  color: var(--amber);
+  font-weight: 600;
+}
+
+input[type="range"] {
+  accent-color: var(--amber);
+}
+
+/* ----- Demonstração lado a lado ----- */
+.demo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 700px) {
+  .demo-pair { grid-template-columns: 1fr; }
+}
+
+.demo-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.demo-panel-label {
+  padding: 10px 16px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.demo-panel-label.flex { background: rgba(111,179,216,0.12); color: var(--flex-color); }
+.demo-panel-label.grid { background: rgba(240,168,48,0.12); color: var(--grid-color); }
+
+.demo-stage {
+  padding: 16px;
+  min-height: 140px;
+  background: var(--bg-card-alt);
+}
+
+/* ============================================ */
+/* DEMO 1: container de cards, mesmo visual hoje */
+/* ============================================ */
+
+.cards-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-col, 90px), 1fr));
+  gap: 12px;
+}
+
+.card-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+/* a pegadinha: no flex, sem largura definida, os itens da última
+   linha "esticam" de forma desigual pra preencher o espaço sobrando */
+.cards-flex .card-item {
+  flex: 1 1 var(--min-col, 90px);
+}
+
+.cards-grid .card-item {
+  min-width: 0; /* evita overflow de grid item */
+}
+
+/* ----- código mostrado ----- */
+pre {
+  background: #14161a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+code {
+  font-family: "SF Mono", Consolas, Monaco, monospace;
+}
+
+.tok-prop { color: #79c0ff; }
+.tok-val { color: #f0a830; }
+.tok-sel { color: #7ee787; }
+.tok-comment { color: #6e7681; }
+
+.verdict {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 16px 0 40px;
+}
+
+@media screen and (max-width: 700px) {
+  .verdict { grid-template-columns: 1fr; }
+}
+
+.verdict-box {
+  border-radius: 8px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+}
+
+.verdict-box.flex-box { border-top: 3px solid var(--flex-color); }
+.verdict-box.grid-box { border-top: 3px solid var(--grid-color); }
+
+.verdict-box h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.verdict-box.flex-box h3 { color: var(--flex-color); }
+.verdict-box.grid-box h3 { color: var(--grid-color); }
+
+.verdict-box ul {
+  color: var(--text-dim);
+  padding-left: 20px;
+  margin: 8px 0 0;
+}
+
+.verdict-box li { margin-bottom: 6px; }
+
+footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}

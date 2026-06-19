@@ -1,0 +1,295 @@
+/* ── Reset e base ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #1a1a2e;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.75rem;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.subtitle span {
+    background: #e9ecef;
+    padding: 0.1rem 0.6rem;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+/* ── Container do Grid ── */
+.album-grid {
+    display: grid;
+    /* Grid fluido: colunas com largura mínima de 180px,
+        preenchendo o espaço disponível */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background: linear-gradient(145deg, #ffffff, #f0f2f5);
+    border-radius: 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+/* ── Cada item do álbum ── */
+.photo-card {
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+    cursor: default;
+}
+
+.photo-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Área da imagem (simulada) ── */
+.photo-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* proporção quadrada = estilo polaroid */
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: #adb5bd;
+    transition: background 0.3s ease;
+    position: relative;
+}
+
+/* Ícones temáticos para cada foto */
+.photo-img .icon {
+    font-size: 3.8rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+/* Cores de fundo distintas para cada card */
+.photo-card:nth-child(1) .photo-img {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+.photo-card:nth-child(2) .photo-img {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+}
+.photo-card:nth-child(3) .photo-img {
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+}
+.photo-card:nth-child(4) .photo-img {
+    background: linear-gradient(135deg, #fddb92, #d1fdff);
+}
+.photo-card:nth-child(5) .photo-img {
+    background: linear-gradient(135deg, #c1f0c1, #a8e6cf);
+}
+.photo-card:nth-child(6) .photo-img {
+    background: linear-gradient(135deg, #f6d5f7, #fbe9d7);
+}
+.photo-card:nth-child(7) .photo-img {
+    background: linear-gradient(135deg, #b8cbb8, #b6d0d4);
+}
+.photo-card:nth-child(8) .photo-img {
+    background: linear-gradient(135deg, #f7d794, #f5cd79);
+}
+.photo-card:nth-child(9) .photo-img {
+    background: linear-gradient(135deg, #d4a5a5, #c9b1b1);
+}
+.photo-card:nth-child(10) .photo-img {
+    background: linear-gradient(135deg, #b8e1fc, #d0f0fd);
+}
+
+/* ── Legenda da foto ── */
+.photo-caption {
+    padding: 14px 16px 16px;
+    background: #ffffff;
+    border-top: 1px solid #f1f3f5;
+}
+
+.photo-caption .title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photo-caption .title .badge {
+    background: #e9ecef;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #495057;
+    padding: 0.15rem 0.6rem;
+    border-radius: 30px;
+    letter-spacing: 0.3px;
+}
+
+.photo-caption .desc {
+    font-size: 0.8rem;
+    color: #868e96;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photo-caption .desc .date {
+    font-size: 0.7rem;
+    color: #adb5bd;
+}
+
+/* ─── Responsividade ─── */
+
+/* Telas médias (tablets) – 3 colunas */
+@media (max-width: 900px) {
+    .album-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .photo-img {
+        font-size: 2.6rem;
+    }
+    .photo-img .icon {
+        font-size: 3rem;
+    }
+    .photo-caption .title {
+        font-size: 0.9rem;
+    }
+}
+
+/* Telas pequenas (mobile) – 2 colunas */
+@media (max-width: 600px) {
+    .album-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 12px;
+        padding: 12px;
+        border-radius: 18px;
+    }
+
+    .photo-img {
+        font-size: 2rem;
+        aspect-ratio: 1 / 1;
+    }
+    .photo-img .icon {
+        font-size: 2.4rem;
+    }
+
+    .photo-caption {
+        padding: 10px 12px 12px;
+    }
+    .photo-caption .title {
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .photo-caption .title .badge {
+        font-size: 0.55rem;
+    }
+    .photo-caption .desc {
+        font-size: 0.7rem;
+        flex-wrap: wrap;
+    }
+    .photo-caption .desc .date {
+        font-size: 0.6rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+    .subtitle {
+        font-size: 0.8rem;
+    }
+}
+
+/* Telas muito pequenas – 1 coluna (opcional, mas o auto-fit já resolve) */
+@media (max-width: 400px) {
+    .album-grid {
+        grid-template-columns: 1fr 1fr;
+        /* mantém 2 colunas até o limite */
+        gap: 10px;
+        padding: 10px;
+    }
+    .photo-img {
+        aspect-ratio: 1 / 1;
+    }
+}
+
+/* ── Info extra ── */
+.info-bar {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 60px;
+    font-size: 0.85rem;
+    color: #495057;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+}
+
+.info-bar strong {
+    color: #1a1a2e;
+    font-weight: 600;
+}
+
+.info-bar .tag {
+    background: #e9ecef;
+    padding: 0.1rem 0.7rem;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #343a40;
+}
+
+@media (max-width: 600px) {
+    .info-bar {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        gap: 0.5rem 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+}

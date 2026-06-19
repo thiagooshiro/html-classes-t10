@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Álbum de Fotos - Grid Responsivo</title>
+    <link rel="stylesheet" href="./responsive.css">
+</head>
+<body>
+
+    <h1>📸 Álbum de Fotos</h1>
+    <p class="subtitle">
+        Grid responsivo com <span>auto-fit</span> e <span>minmax()</span> &bull;
+        10 itens &bull; redimensione a janela
+    </p>
+
+    <!-- ─── GRID DO ÁLBUM ─── -->
+    <div class="album-grid">
+
+        <!-- 1 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🌅</span></div>
+            <div class="photo-caption">
+                <div class="title">Pôr do Sol <span class="badge">Fav</span></div>
+                <div class="desc"><span>Praia do Forte</span><span class="date">12/04</span></div>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🏔️</span></div>
+            <div class="photo-caption">
+                <div class="title">Montanhas <span class="badge">Novo</span></div>
+                <div class="desc"><span>Serra da Estrela</span><span class="date">28/05</span></div>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🌊</span></div>
+            <div class="photo-caption">
+                <div class="title">Ondas <span class="badge">Viral</span></div>
+                <div class="desc"><span>Nazaré</span><span class="date">03/06</span></div>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🌸</span></div>
+            <div class="photo-caption">
+                <div class="title">Cerejeira <span class="badge">4K</span></div>
+                <div class="desc"><span>Jardim Botânico</span><span class="date">19/07</span></div>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🌆</span></div>
+            <div class="photo-caption">
+                <div class="title">Cidade <span class="badge">Noite</span></div>
+                <div class="desc"><span>Tokyo Tower</span><span class="date">08/08</span></div>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🌿</span></div>
+            <div class="photo-caption">
+                <div class="title">Floresta <span class="badge">Green</span></div>
+                <div class="desc"><span>Amazônia</span><span class="date">14/09</span></div>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🏖️</span></div>
+            <div class="photo-caption">
+                <div class="title">Praia <span class="badge">Sol</span></div>
+                <div class="desc"><span>Copacabana</span><span class="date">22/10</span></div>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🌌</span></div>
+            <div class="photo-caption">
+                <div class="title">Estrelas <span class="badge">Espaço</span></div>
+                <div class="desc"><span>Deserto do Atacama</span><span class="date">05/11</span></div>
+            </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">🍂</span></div>
+            <div class="photo-caption">
+                <div class="title">Outono <span class="badge">Cozy</span></div>
+                <div class="desc"><span>Central Park</span><span class="date">18/11</span></div>
+            </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="photo-card">
+            <div class="photo-img"><span class="icon">❄️</span></div>
+            <div class="photo-caption">
+                <div class="title">Neve <span class="badge">Inverno</span></div>
+                <div class="desc"><span>Alpes Suíços</span><span class="date">02/12</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ─── INFO BAR ─── -->
+    <div class="info-bar">
+        <span><strong>📐 Grid:</strong> <span class="tag">auto-fit</span> + <span class="tag">minmax(180px, 1fr)</span></span>
+        <span><strong>📱 Breakpoints:</strong> 900px &bull; 600px</span>
+        <span><strong>🖱️ Hover:</strong> elevação + sombra</span>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Álbum Responsivo - Layout Dinâmico</title>
+    <link rel="stylesheet" href="./responsive2.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h1>📸 Álbum Dinâmico</h1>
+        <p>Grid que se refaz em mobile: ordem alterada, tags ocultas e título sobreposto</p>
+        <span class="badge-demo">⬇️ Redimensione a janela para ver a transformação</span>
+    </div>
+
+    <!-- ─── GRID DO ÁLBUM ─── -->
+    <div class="album-grid">
+
+        <!-- Card 1 -->
+        <div class="photo-card">
+            <div class="photo-img">🌅</div>
+            <div class="photo-content">
+                <div class="title">Pôr do Sol na Praia</div>
+                <div class="desc">Cores vibrantes sobre o oceano</div>
+                <div class="tags">
+                    <span class="tag">Natureza</span>
+                    <span class="tag">Favorito</span>
+                </div>
+                <span class="date">12/04/2026</span>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="photo-card">
+            <div class="photo-img">🏔️</div>
+            <div class="photo-content">
+                <div class="title">Montanhas Nevadas</div>
+                <div class="desc">Pico coberto de neve ao amanhecer</div>
+                <div class="tags">
+                    <span class="tag">Aventura</span>
+                    <span class="tag">Inverno</span>
+                </div>
+                <span class="date">28/05/2026</span>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="photo-card">
+            <div class="photo-img">🌊</div>
+            <div class="photo-content">
+                <div class="title">Ondas Gigantes</div>
+                <div class="desc">Surfando no paredão de Nazaré</div>
+                <div class="tags">
+                    <span class="tag">Esporte</span>
+                    <span class="tag">Radical</span>
+                </div>
+                <span class="date">03/06/2026</span>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="photo-card">
+            <div class="photo-img">🌸</div>
+            <div class="photo-content">
+                <div class="title">Cerejeiras em Flor</div>
+                <div class="desc">Primavera no Jardim Botânico</div>
+                <div class="tags">
+                    <span class="tag">Flores</span>
+                    <span class="tag">Paisagem</span>
+                </div>
+                <span class="date">19/07/2026</span>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="photo-card">
+            <div class="photo-img">🌆</div>
+            <div class="photo-content">
+                <div class="title">Vista Noturna</div>
+                <div class="desc">Skyline iluminada da cidade</div>
+                <div class="tags">
+                    <span class="tag">Urbano</span>
+                    <span class="tag">Noite</span>
+                </div>
+                <span class="date">08/08/2026</span>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="photo-card">
+            <div class="photo-img">🌿</div>
+            <div class="photo-content">
+                <div class="title">Floresta Amazônica</div>
+                <div class="desc">Densidade verde e biodiversidade</div>
+                <div class="tags">
+                    <span class="tag">Expedição</span>
+                    <span class="tag">Selva</span>
+                </div>
+                <span class="date">14/09/2026</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ─── INFO BAR ─── -->
+    <div class="info-bar">
+        <span><strong>Desktop:</strong> 3 colunas · tags visíveis · ordem natural</span>
+        <span><strong>Mobile:</strong> 1 coluna · <span class="tag">ordem alterada</span> · <span class="tag">tags ocultas</span> · título sobreposto</span>
+        <span><strong>Breakpoint:</strong> 650px</span>
+    </div>
+
+</body>
+</html>

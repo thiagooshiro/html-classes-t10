@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid vs Flex: entendendo a diferença na prática</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <h1>Grid vs Flex: entendendo a diferença na prática</h1>
+  <p class="subtitle">Este documento HTML aplica, ao vivo, exatamente os conceitos que ele está explicando.</p>
+
+  <div class="callout">
+    A plataforma do curso ensina que, pra dispor os cards desse jeito, se adaptando ao layout, o
+    caminho é usar <code>display: grid</code> — e na prática é mesmo a ferramenta mais adequada
+    aqui. Mas vale entender <strong>por quê</strong>: dá pra chegar num visual parecido com
+    Flexbox também, então a diferença real está em <strong>como cada um se comporta nos
+    detalhes</strong>, principalmente quando o número de itens não fecha uma linha exata.
+  </div>
+
+  <h2>1. O mesmo visual, dois jeitos diferentes de chegar lá</h2>
+  <p>
+    Mexa nos controles abaixo. Os dois painéis usam <strong>exatamente os mesmos cards</strong>,
+    com a mesma largura mínima e o mesmo espaçamento — um construído com Flexbox, o outro com Grid.
+  </p>
+
+  <div class="controls">
+    <div class="control-group">
+      <label for="itemCount">Número de cards: <output id="itemCountValue">7</output></label>
+      <input type="range" id="itemCount" min="3" max="12" value="7">
+    </div>
+    <div class="control-group">
+      <label for="minWidth">Largura mínima do card: <output id="minWidthValue">90px</output></label>
+      <input type="range" id="minWidth" min="60" max="160" value="90">
+    </div>
+  </div>
+
+  <div class="demo-pair">
+    <div class="demo-panel">
+      <div class="demo-panel-label flex">Flexbox</div>
+      <div class="demo-stage">
+        <div class="cards-flex" id="stageFlex"></div>
+      </div>
+    </div>
+    <div class="demo-panel">
+      <div class="demo-panel-label grid">Grid</div>
+      <div class="demo-stage">
+        <div class="cards-grid" id="stageGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    Repare: com a maioria das combinações, os dois ficam <strong>visualmente idênticos</strong>.
+    Mas experimente um número de cards que <strong>não feche a última linha exatamente</strong>
+    (tipo 7 ou 9) — olha o que acontece com o tamanho dos cards da última fileira em cada um.
+  </p>
+
+  <div class="verdict">
+    <div class="verdict-box flex-box">
+      <h3>No Flexbox</h3>
+      <ul>
+        <li>Os itens da última linha incompleta <strong>esticam</strong> pra preencher o espaço sobrando, porque <code>flex-grow</code> distribui o espaço livre entre os itens daquela linha.</li>
+        <li>Isso quebra o alinhamento visual em coluna entre as linhas — cada linha "decide" sozinha como dividir o espaço.</li>
+      </ul>
+    </div>
+    <div class="verdict-box grid-box">
+      <h3>No Grid</h3>
+      <ul>
+        <li>As colunas são definidas <strong>para a grade inteira</strong>, não linha por linha — então a última linha incompleta simplesmente deixa espaço vazio, sem esticar os itens.</li>
+        <li>Os cards continuam alinhados em coluna entre todas as linhas, porque a grade é uma estrutura única, não fileiras independentes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>2. O código por trás de cada um</h2>
+  <p>Isto é literalmente o CSS que está rodando nos dois painéis acima:</p>
+
+  <pre><code><span class="tok-comment">/* Flexbox */</span>
+<span class="tok-sel">.cards-flex</span> {
+  <span class="tok-prop">display</span>: <span class="tok-val">flex</span>;
+  <span class="tok-prop">flex-wrap</span>: <span class="tok-val">wrap</span>;
+  <span class="tok-prop">gap</span>: <span class="tok-val">12px</span>;
+}
+
+<span class="tok-sel">.cards-flex .card-item</span> {
+  <span class="tok-prop">flex</span>: <span class="tok-val">1 1 90px</span>; <span class="tok-comment">/* cresce, encolhe, base de 90px */</span>
+}</code></pre>
+
+  <pre><code><span class="tok-comment">/* Grid */</span>
+<span class="tok-sel">.cards-grid</span> {
+  <span class="tok-prop">display</span>: <span class="tok-val">grid</span>;
+  <span class="tok-prop">grid-template-columns</span>: <span class="tok-val">repeat(auto-fit, minmax(90px, 1fr))</span>;
+  <span class="tok-prop">gap</span>: <span class="tok-val">12px</span>;
+}</code></pre>
+
+  <p>
+    Repare que o Flexbox precisa da regra <code>flex: 1 1 90px</code> no <strong>item</strong>
+    pra crescer — é aí que mora o comportamento de "esticar a última linha". O Grid resolve isso
+    inteiramente na definição do <strong>container</strong>, com <code>minmax()</code>, sem nenhuma
+    regra adicional no item.
+  </p>
+
+  <h2>3. Então quando usar cada um?</h2>
+  <p>
+    A afirmação certa não é "grid é obrigatório", é "grid é a ferramenta certa quando você quer
+    controlar <strong>duas dimensões ao mesmo tempo</strong> (linha e coluna) como uma estrutura
+    única". Flexbox continua sendo a ferramenta certa quando você só precisa organizar itens
+    <strong>numa direção</strong> (uma barra de navegação, uma lista de botões, um conjunto de tags).
+  </p>
+
+  <p>
+    Pro caso específico de <code>photo-grid</code> e <code>places</code> do projeto — onde o
+    requisito é alinhamento consistente em colunas, com itens de tamanhos variados que precisam
+    se comportar como uma grade de verdade — Grid é a escolha <strong>mais adequada</strong>, não
+    a <strong>única tecnicamente possível</strong>. É uma diferença pequena de palavras com uma
+    diferença grande de entendimento.
+  </p>
+
+  <footer>
+    Mexa nos controles lá em cima de novo, prestando atenção especificamente na última linha de cada painel.
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
