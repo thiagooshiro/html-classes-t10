@@ -1,5 +1,5 @@
 /* ================================================================
-   SABOR & TÉCNICA — App de Receitas
+   FRAMED — Rede de Ensaios Fotográficos
    Estilos base: NÃO ALTERE esta seção.
    Exercícios: procure os blocos marcados com EXERCÍCIO.
 ================================================================ */
@@ -13,7 +13,7 @@
 
 body {
   font-family: "Segoe UI", system-ui, sans-serif;
-  background: #faf8f4;
+  background: #f5f5f0;
   color: #1a1a1a;
   font-size: 16px;
   line-height: 1.5;
@@ -25,17 +25,19 @@ body {
   padding: 0 24px;
 }
 
+/* ── Tags reutilizáveis ── */
 .tag {
-  background: #f0ebe0;
+  background: #e8e8e0;
   padding: 0.2rem 0.75rem;
   border-radius: 20px;
   font-size: 0.72rem;
   font-weight: 600;
-  color: #6b4f2a;
+  color: #444;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
+/* ── Títulos de seção ── */
 .section {
   margin: 64px 0;
 }
@@ -51,37 +53,52 @@ body {
   border-bottom: 2px solid #1a1a1a;
 }
 
+/* ── Botões ── */
 button {
   cursor: pointer;
   border: none;
   font-family: inherit;
 }
 
+
 /* ================================================================
-   EXERCÍCIO 1 — BÁSICO: Cabeçalho
-   O cabeçalho tem três filhos: logo, nav e botão.
-   Faça eles ficarem lado a lado com espaço distribuído entre eles,
-   alinhados verticalmente ao centro.
-   Os links dentro da nav também precisam ficar lado a lado.
+   EXERCÍCIO 1 — BÁSICO: Flexbox no cabeçalho
+   Conceito: flex, justify-content, align-items, gap
+
+   O cabeçalho precisa ter:
+   - logo à esquerda
+   - links de navegação no centro
+   - botão à direita
+   Tudo alinhado verticalmente ao centro.
+
+   Elementos disponíveis:
+   .site-header         → container principal
+   .site-header__logo   → nome "Framed"
+   .site-header__nav    → grupo de links
+   .site-header__cta    → botão "Entrar"
 ================================================================ */
 
 .site-header {
   padding: 20px 0;
-  border-bottom: 1px solid #e8e0d0;
+  border-bottom: 1px solid #ddd;
   margin-bottom: 48px;
 
-  /* TODO */
+  /* TODO: torne este elemento flex */
+  /* TODO: distribua o espaço entre os três filhos */
+  /* TODO: alinhe verticalmente ao centro */
 }
 
 .site-header__logo {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
   color: #1a1a1a;
+  text-decoration: none;
 }
 
 .site-header__nav {
-  /* TODO */
+  /* TODO: torne este elemento flex */
+  /* TODO: adicione um gap de 24px entre os links */
 }
 
 .site-header__link {
@@ -91,8 +108,12 @@ button {
   font-weight: 500;
 }
 
+.site-header__link:hover {
+  color: #1a1a1a;
+}
+
 .site-header__cta {
-  background: #c0392b;
+  background: #1a1a1a;
   color: #fff;
   padding: 8px 20px;
   border-radius: 6px;
@@ -100,32 +121,40 @@ button {
   font-weight: 600;
 }
 
+
 /* ================================================================
-   EXERCÍCIO 2 — BÁSICO: Perfil do chef
-   O perfil tem avatar, informações e estatísticas.
-   Faça os três ficarem lado a lado, alinhados ao centro vertical.
-   As informações devem crescer e ocupar o espaço disponível,
-   empurrando as estatísticas para a direita.
-   As tags dentro do perfil devem ficar em linha e quebrar se necessário.
-   Os números de estatísticas devem ficar lado a lado entre si.
-   Cada stat (valor + rótulo) deve empilhar verticalmente.
+   EXERCÍCIO 2 — BÁSICO: Flexbox no perfil
+   Conceito: flex, align-items, gap, flex-direction
+
+   O perfil precisa ter:
+   - avatar, informações e estatísticas lado a lado
+   - alinhados verticalmente ao centro
+   - gap de 32px entre eles
+
+   Elementos disponíveis:
+   .profile             → container
+   .profile__avatar     → emoji de câmera
+   .profile__info       → nome, bio e tags
+   .profile__stats      → bloco de números
 ================================================================ */
 
-.chef-profile {
+.profile {
   background: #fff;
   border-radius: 16px;
   padding: 32px;
   margin-bottom: 64px;
-  border: 1px solid #e8e0d0;
+  border: 1px solid #e8e8e0;
 
-  /* TODO */
+  /* TODO: torne este elemento flex */
+  /* TODO: alinhe os filhos verticalmente ao centro */
+  /* TODO: adicione gap de 32px */
 }
 
-.chef-profile__avatar {
+.profile__avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: #f0ebe0;
+  background: #e8e8e0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,53 +162,44 @@ button {
   flex-shrink: 0;
 }
 
-.chef-profile__info {
-  /* TODO */
+.profile__info {
+  /* TODO: este elemento deve crescer e ocupar o espaço disponível (flex-grow) */
 }
 
-.chef-profile__badge {
-  display: inline-block;
-  background: #c0392b;
-  color: #fff;
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 0.15rem 0.7rem;
-  border-radius: 20px;
-  margin-bottom: 6px;
-}
-
-.chef-profile__name {
+.profile__name {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 6px;
 }
 
-.chef-profile__bio {
+.profile__bio {
   color: #555;
   font-size: 0.9rem;
   max-width: 480px;
   margin-bottom: 12px;
 }
 
-.chef-profile__tags {
-  /* TODO */
+.profile__tags {
+  /* TODO: torne este elemento flex */
+  /* TODO: adicione gap de 8px */
+  /* TODO: permita que as tags quebrem linha se necessário (flex-wrap) */
 }
 
-.chef-profile__stats {
+.profile__stats {
+  /* TODO: torne este elemento flex */
+  /* TODO: adicione gap de 24px */
   flex-shrink: 0;
-  /* TODO */
 }
 
 .stat {
   text-align: center;
-  /* TODO */
+  /* TODO: organize os filhos em coluna (flex-direction) */
 }
 
 .stat__value {
   font-size: 1.4rem;
   font-weight: 700;
+  color: #1a1a1a;
 }
 
 .stat__label {
@@ -189,38 +209,48 @@ button {
   letter-spacing: 0.5px;
 }
 
+
 /* ================================================================
-   EXERCÍCIO 3 — INTERMEDIÁRIO: Receitas em destaque
-   O grid tem 5 cards. O primeiro (hero) deve ser maior e ocupar
-   toda a altura da grade, enquanto os outros 4 formam uma grade
-   2x2 ao lado dele.
+   EXERCÍCIO 3 — INTERMEDIÁRIO: Grid com célula expandida
+   Conceito: grid-template-columns, grid-row, grid-column, gap
 
-   ┌─────────────┬──────┬──────┐
-   │             │  2   │  3   │
-   │      1      ├──────┼──────┤
-   │             │  4   │  5   │
-   └─────────────┴──────┴──────┘
+   A grade de ensaios em destaque tem 5 cards.
+   O primeiro card (.featured-card--large) deve ocupar
+   2 linhas de altura, ficando à esquerda.
+   Os outros 4 cards formam uma grade 2x2 à direita.
 
-   Os metadados dentro do overlay (tempo, dificuldade, pessoas)
-   precisam ficar lado a lado com espaço entre eles.
+   Estrutura esperada:
+   ┌───────────┬──────┬──────┐
+   │           │  2   │  3   │
+   │     1     ├──────┼──────┤
+   │  (2 rows) │  4   │  5   │
+   └───────────┴──────┴──────┘
+
+   Elementos disponíveis:
+   .featured-grid           → container
+   .featured-card           → card normal
+   .featured-card--large    → card que ocupa 2 linhas
 ================================================================ */
 
 .featured-grid {
-  /* TODO */
+  /* TODO: defina um grid de 3 colunas onde a primeira tem 2fr e as demais 1fr */
+  /* TODO: defina 2 linhas de altura igual (ex: 240px cada) */
+  /* TODO: adicione gap de 16px */
 }
 
-.recipe-card {
+.featured-card {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  background: #e8e0d0;
+  background: #e8e8e0;
 }
 
-.recipe-card--hero {
-  /* TODO */
+.featured-card--large {
+  /* TODO: faça este card ocupar 2 linhas (grid-row: span 2) */
 }
 
-.recipe-card__img {
+/* Imagens temáticas */
+.featured-card__img {
   width: 100%;
   height: 100%;
   display: flex;
@@ -229,345 +259,214 @@ button {
   font-size: 4rem;
 }
 
-.recipe-card__img--1 { background: linear-gradient(135deg, #3d1c02, #8b3a0f); }
-.recipe-card__img--2 { background: linear-gradient(135deg, #1a2e1a, #3a5a2a); }
-.recipe-card__img--3 { background: linear-gradient(135deg, #2e2a0a, #6a5a1a); }
-.recipe-card__img--4 { background: linear-gradient(135deg, #1a1a2e, #3a3a6a); }
-.recipe-card__img--5 { background: linear-gradient(135deg, #2e1a0a, #6a3a1a); }
+.featured-card__img--1 { background: linear-gradient(135deg, #1a1a2e, #4a4a6a); }
+.featured-card__img--2 { background: linear-gradient(135deg, #2d2d2d, #5a5a5a); }
+.featured-card__img--3 { background: linear-gradient(135deg, #1a2e1a, #3a5a3a); }
+.featured-card__img--4 { background: linear-gradient(135deg, #2e1a1a, #5a3a3a); }
+.featured-card__img--5 { background: linear-gradient(135deg, #1a2a2e, #3a5a5a); }
 
-.recipe-card__overlay {
+.featured-card__overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 12px 16px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
   color: #fff;
 }
 
-.recipe-card__category {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background: #c0392b;
-  padding: 0.1rem 0.5rem;
-  border-radius: 4px;
-  margin-bottom: 4px;
-}
-
-.recipe-card__title {
+.featured-card__title {
   font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 6px;
 }
 
-.recipe-card__meta {
-  /* TODO */
+.featured-card__meta {
   font-size: 0.72rem;
-  opacity: 0.85;
+  opacity: 0.75;
+  margin-top: 2px;
 }
+
 
 /* ================================================================
-   EXERCÍCIO 4 — INTERMEDIÁRIO: Receita detalhada
-   A seção de receita tem dois blocos: ingredientes e passos.
-   Os ingredientes devem ter uma largura fixa menor,
-   e os passos devem ocupar o espaço restante ao lado.
+   EXERCÍCIO 4 — INTERMEDIÁRIO: Galeria com grid automático
+   Conceito: grid-template-columns com repeat + auto-fill,
+             minmax, aspect-ratio, grid-column span
 
-   Dentro dos ingredientes, quantidade e nome precisam
-   ficar na mesma linha, alinhados pela linha de base do texto.
+   A galeria deve:
+   - Usar repeat(auto-fill, minmax(200px, 1fr)) pra criar
+     quantas colunas couberem automaticamente
+   - Cada foto deve ter aspect-ratio: 1 / 1 (quadrado)
+   - As fotos .photo--1, .photo--5 e .photo--9 devem ocupar
+     2 colunas (grid-column: span 2)
 
-   Cada passo tem um número grande e um bloco de conteúdo.
-   Eles devem ficar lado a lado, alinhados pelo topo.
+   Elementos disponíveis:
+   .photo-grid   → container
+   .photo        → cada foto
 ================================================================ */
 
-.recipe-detail {
-  background: #fff;
-  border-radius: 16px;
-  border: 1px solid #e8e0d0;
-  overflow: hidden;
-
-  /* TODO */
+.photo-grid {
+  /* TODO: defina o grid com repeat(auto-fill, minmax(200px, 1fr)) */
+  /* TODO: adicione gap de 8px */
 }
 
-.recipe-detail__ingredients {
-  background: #faf3e8;
-  padding: 32px 24px;
-  border-right: 1px solid #e8e0d0;
-}
-
-.recipe-detail__steps {
-  padding: 32px;
-}
-
-.recipe-detail__subtitle {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.recipe-detail__serves {
-  font-size: 0.8rem;
-  color: #888;
-  margin-bottom: 20px;
-}
-
-.ingredients-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.ingredients-list__item {
-  /* TODO */
-}
-
-.ingredients-list__qty {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #c0392b;
-  min-width: 56px;
-  flex-shrink: 0;
-}
-
-.ingredients-list__name {
-  font-size: 0.88rem;
-  color: #333;
-}
-
-.steps-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.step-item {
-  /* TODO */
-}
-
-.step-item__number {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #e8e0d0;
-  flex-shrink: 0;
-  line-height: 1;
-  min-width: 40px;
-}
-
-.step-item__title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.step-item__desc {
-  font-size: 0.875rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* ================================================================
-   EXERCÍCIO 5 — INTERMEDIÁRIO: Galeria de receitas
-   A galeria deve criar automaticamente quantas colunas couberem
-   na tela, com cada coluna tendo no mínimo 220px.
-   Cada imagem de card deve ter proporção retrato (mais alta que larga).
-   O primeiro e o quinto card devem ser mais largos que os demais.
-================================================================ */
-
-.recipes-grid {
-  /* TODO */
-}
-
-.recipe-thumb {
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid #e8e0d0;
-  display: flex;
-  flex-direction: column;
-}
-
-.recipe-thumb__img {
+.photo {
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  /* TODO */
+  font-size: 2.5rem;
+  background: #e0e0d8;
+  /* TODO: defina aspect-ratio 1/1 */
+  overflow: hidden;
 }
 
-.recipe-thumb__img--1 { background: linear-gradient(135deg, #3d1c02, #8b3a0f); }
-.recipe-thumb__img--2 { background: linear-gradient(135deg, #1a2e1a, #3a5a2a); }
-.recipe-thumb__img--3 { background: linear-gradient(135deg, #2e2a0a, #6a5a1a); }
-.recipe-thumb__img--4 { background: linear-gradient(135deg, #1a1a2e, #3a3a6a); }
-.recipe-thumb__img--5 { background: linear-gradient(135deg, #2e1a0a, #6a3a1a); }
-.recipe-thumb__img--6 { background: linear-gradient(135deg, #0a2e1a, #1a6a3a); }
-.recipe-thumb__img--7 { background: linear-gradient(135deg, #2e1a1a, #6a3a3a); }
-.recipe-thumb__img--8 { background: linear-gradient(135deg, #2e0a0a, #8b1a1a); }
+/* Cores individuais das fotos */
+.photo--1  { background: linear-gradient(135deg, #1a1a2e, #4a4a6a); }
+.photo--2  { background: linear-gradient(135deg, #2d2d2d, #5a5a5a); }
+.photo--3  { background: linear-gradient(135deg, #1a2e1a, #3a5a3a); }
+.photo--4  { background: linear-gradient(135deg, #2e1a1a, #5a3a3a); }
+.photo--5  { background: linear-gradient(135deg, #1a2a2e, #3a5a5a); }
+.photo--6  { background: linear-gradient(135deg, #2e2a1a, #5a5a3a); }
+.photo--7  { background: linear-gradient(135deg, #2a1a2e, #5a3a6a); }
+.photo--8  { background: linear-gradient(135deg, #1a2e2a, #3a5a52); }
+.photo--9  { background: linear-gradient(135deg, #2e1a2a, #5a3a52); }
+.photo--10 { background: linear-gradient(135deg, #1e2a1a, #3e5a3a); }
+.photo--11 { background: linear-gradient(135deg, #1a1e2e, #3a3e6a); }
+.photo--12 { background: linear-gradient(135deg, #2e2e1a, #5a5a3a); }
 
-/* TODO: primeiro e quinto card devem ocupar mais espaço horizontal */
+/* TODO: faça .photo--1, .photo--5 e .photo--9 ocuparem 2 colunas */
 
-.recipe-thumb__info {
-  padding: 12px 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-}
-
-.recipe-thumb__category {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: #c0392b;
-}
-
-.recipe-thumb__title {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  line-height: 1.3;
-}
-
-.recipe-thumb__meta {
-  margin-top: auto;
-  padding-top: 8px;
-  /* TODO: tempo e dificuldade nas extremidades opostas da mesma linha */
-  font-size: 0.75rem;
-  color: #888;
-}
-
-.recipe-thumb__difficulty {
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-.recipe-thumb__difficulty--easy   { background: #d4edda; color: #155724; }
-.recipe-thumb__difficulty--medium { background: #fff3cd; color: #856404; }
-.recipe-thumb__difficulty--hard   { background: #f8d7da; color: #721c24; }
 
 /* ================================================================
-   EXERCÍCIO 6 — INTERMEDIÁRIO: Avaliações aninhadas
-   Os cards de avaliação devem aparecer empilhados um abaixo do outro.
-   Dentro de cada card, o cabeçalho tem avatar, autor e estrelas
-   na mesma linha, alinhados verticalmente ao centro.
-   O bloco de autor (nome + data) deve empilhar verticalmente.
-   As estrelas devem ficar coladas na extremidade direita do cabeçalho.
+   EXERCÍCIO 5 — INTERMEDIÁRIO: Flex nos cards de sugestão
+   Conceito: flex, align-items, gap, margin-left: auto
 
-   ┌──────────────────────────────────────────┐
-   │ [avatar]  nome              data  ★★★★★ │
-   │ Texto da avaliação...                    │
-   └──────────────────────────────────────────┘
+   Cada card de sugestão deve ter:
+   - avatar à esquerda
+   - nome e subtítulo no centro (em coluna)
+   - botão "Seguir" à direita, empurrado pelo espaço disponível
+
+   Estrutura esperada:
+   ┌────┬──────────────────────────┬──────────┐
+   │ 🎞 │ Pedro Alves              │ [Seguir] │
+   │    │ Arquitetura · São Paulo  │          │
+   └────┴──────────────────────────┴──────────┘
+
+   Elementos disponíveis:
+   .suggestions          → container dos cards
+   .suggestion-card      → cada card
+   .suggestion-card__avatar
+   .suggestion-card__info
+   .suggestion-card__btn
 ================================================================ */
 
-.reviews {
-  /* TODO */
-}
-
-.review-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px 24px;
-  border: 1px solid #e8e0d0;
+.suggestions {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.review-card__header {
-  /* TODO */
+.suggestion-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1px solid #e8e8e0;
+
+  /* TODO: torne este elemento flex */
+  /* TODO: alinhe verticalmente ao centro */
+  /* TODO: adicione gap de 16px */
 }
 
-.review-card__avatar {
-  width: 40px;
-  height: 40px;
+.suggestion-card__avatar {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: #f0ebe0;
+  background: #e8e8e0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
 }
 
-.review-card__author {
-  /* TODO */
+.suggestion-card__info {
+  /* TODO: organize os filhos em coluna */
+  /* TODO: este elemento deve crescer pra empurrar o botão pra direita (flex-grow) */
 }
 
-.review-card__name {
+.suggestion-card__name {
   font-size: 0.9rem;
   font-weight: 600;
+  color: #1a1a1a;
 }
 
-.review-card__date {
-  font-size: 0.75rem;
-  color: #aaa;
+.suggestion-card__sub {
+  font-size: 0.78rem;
+  color: #888;
 }
 
-.review-card__stars {
-  font-size: 1rem;
-  color: #f39c12;
-  /* TODO */
+.suggestion-card__btn {
+  background: transparent;
+  border: 1.5px solid #1a1a1a;
+  color: #1a1a1a;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
 }
 
-.review-card__text {
-  font-size: 0.875rem;
-  color: #555;
-  line-height: 1.6;
+.suggestion-card__btn:hover {
+  background: #1a1a1a;
+  color: #fff;
 }
+
 
 /* ================================================================
-   EXERCÍCIO 7 — AVANÇADO: Responsividade
-   Dois breakpoints: 768px (tablet) e 480px (mobile).
+   EXERCÍCIO 6 — AVANÇADO: Rodapé com grid de áreas
+   Conceito: grid-template-areas, grid-template-columns,
+             grid-area, align-items
 
-   TABLET (max-width: 768px):
-   - O perfil do chef deve permitir que os elementos quebrem linha,
-     com as informações ocupando a largura toda abaixo do avatar
-   - Os ensaios em destaque: simplifique para 2 colunas,
-     mantendo o hero expandido verticalmente
-   - Ingredientes e passos: empilhe verticalmente
-   - A galeria: duas colunas fixas, cards sem expansão
+   O rodapé atualmente tem apenas logo e copyright.
+   Sua tarefa: sem alterar o HTML, posicione os dois elementos
+   usando grid-template-areas da seguinte forma:
 
-   MOBILE (max-width: 480px):
-   - O cabeçalho: esconda a navegação, empilhe logo e botão
-   - O perfil: coluna, centralizado
-   - Os ensaios: uma coluna só, hero sem expansão
-   - A galeria muda completamente: cada card vira horizontal,
-     com imagem quadrada à esquerda e informações à direita
-   - As avaliações: as estrelas descem para uma nova linha
+   "logo  copy"
+
+   - O logo deve ficar à esquerda
+   - O copyright deve ficar à direita
+   - Os dois devem estar alinhados verticalmente ao centro
+
+   Depois que funcionar: tente fazer o copyright ficar
+   centralizado no espaço da direita (justify-self).
+
+   Elementos disponíveis:
+   .site-footer          → container
+   .site-footer__logo    → nome "Framed"
+   .site-footer__copy    → texto de copyright
 ================================================================ */
 
-@media (max-width: 768px) {
-  /* TODO */
-}
-
-@media (max-width: 480px) {
-  /* TODO */
-}
-
-/* ── Rodapé ── */
 .site-footer {
-  border-top: 1px solid #e8e0d0;
+  border-top: 1px solid #ddd;
   padding: 32px 0 48px;
   margin-top: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  /* TODO: defina um grid com 2 colunas (1fr 1fr) */
+  /* TODO: defina grid-template-areas com "logo copy" */
+  /* TODO: alinhe os itens verticalmente ao centro */
 }
 
 .site-footer__logo {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 800;
   letter-spacing: -0.5px;
+  color: #1a1a1a;
+  /* TODO: atribua a area "logo" a este elemento */
 }
 
 .site-footer__copy {
   font-size: 0.8rem;
   color: #888;
+  /* TODO: atribua a area "copy" a este elemento */
+  /* TODO (bônus): centralize este elemento horizontalmente com justify-self */
 }
