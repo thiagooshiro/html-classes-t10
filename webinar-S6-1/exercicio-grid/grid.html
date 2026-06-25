@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid — Exercício Responsivo</title>
+    <link rel="stylesheet" href="./grid-style.css">
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>CSS Grid — Exercício Responsivo</h1>
+      <p>Desktop pronto. Seu trabalho está nos <strong>media queries</strong> lá no CSS.</p>
+    </header>
+
+    <main class="noticias-grid">
+
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="card__capa">🚀</div>
+        <div class="card__corpo">
+          <span class="card__categoria">Tecnologia</span>
+          <h2 class="card__titulo">Brasil lança satélite de observação climática</h2>
+          <p class="card__resumo">O lançamento marca um passo histórico para o programa espacial brasileiro e abre caminho para monitoramento ambiental em tempo real.</p>
+          <div class="card__tags">
+            <span class="tag">Ciência</span>
+            <span class="tag">Clima</span>
+          </div>
+          <div class="card__rodape">
+            <span class="card__autor">Ana Ribeiro</span>
+            <span class="card__data">18 jun 2026</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="card__capa">🎵</div>
+        <div class="card__corpo">
+          <span class="card__categoria">Cultura</span>
+          <h2 class="card__titulo">Festival de música independente bate recorde de público</h2>
+          <p class="card__resumo">Mais de 40 mil pessoas passaram pelo Parque da Cidade durante os três dias de evento, consolidando a cena alternativa nacional.</p>
+          <div class="card__tags">
+            <span class="tag">Música</span>
+            <span class="tag">Festival</span>
+          </div>
+          <div class="card__rodape">
+            <span class="card__autor">Caio Melo</span>
+            <span class="card__data">20 jun 2026</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="card__capa">🌿</div>
+        <div class="card__corpo">
+          <span class="card__categoria">Meio Ambiente</span>
+          <h2 class="card__titulo">Reflorestamento no Cerrado atinge 10 mil hectares</h2>
+          <p class="card__resumo">Parceria entre ONGs e municípios do Centro-Oeste restaurou áreas degradadas usando espécies nativas e técnicas de bioengenharia.</p>
+          <div class="card__tags">
+            <span class="tag">Natureza</span>
+            <span class="tag">Cerrado</span>
+          </div>
+          <div class="card__rodape">
+            <span class="card__autor">Luísa Fonseca</span>
+            <span class="card__data">21 jun 2026</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card">
+        <div class="card__capa">⚽</div>
+        <div class="card__corpo">
+          <span class="card__categoria">Esporte</span>
+          <h2 class="card__titulo">Seleção sub-20 avança para semifinal da Copa do Mundo</h2>
+          <p class="card__resumo">Com gol nos acréscimos, o Brasil garantiu vaga entre os quatro melhores e enfrenta a Argentina na próxima fase.</p>
+          <div class="card__tags">
+            <span class="tag">Futebol</span>
+            <span class="tag">Copa</span>
+          </div>
+          <div class="card__rodape">
+            <span class="card__autor">Rafael Torres</span>
+            <span class="card__data">22 jun 2026</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="card">
+        <div class="card__capa">🏙️</div>
+        <div class="card__corpo">
+          <span class="card__categoria">Cidades</span>
+          <h2 class="card__titulo">BH inaugura linha de metrô ligando Barreiro ao Centro</h2>
+          <p class="card__resumo">A expansão reduz em até 40 minutos o tempo de deslocamento de moradores da região sul e beneficia cerca de 200 mil usuários diários.</p>
+          <div class="card__tags">
+            <span class="tag">Transporte</span>
+            <span class="tag">BH</span>
+          </div>
+          <div class="card__rodape">
+            <span class="card__autor">Mariana Duarte</span>
+            <span class="card__data">23 jun 2026</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="card" id="last-card">
+        <div class="card__capa">📚</div>
+        <div class="card__corpo">
+          <span class="card__categoria">Educação</span>
+          <h2 class="card__titulo">Nova lei garante acesso à internet em escolas públicas rurais</h2>
+          <p class="card__resumo">Aprovada por unanimidade, a legislação prevê conexão banda larga em 15 mil unidades até o final de 2027.</p>
+          <div class="card__tags">
+            <span class="tag">Escola</span>
+            <span class="tag">Digital</span>
+          </div>
+          <div class="card__rodape">
+            <span class="card__autor">Fernanda Lima</span>
+            <span class="card__data">24 jun 2026</span>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <aside class="instrucoes">
+      <h2>Exercícios</h2>
+      <ol>
+        <li>
+          <strong>Tablet (<code>max-width: 768px</code>):</strong>
+          mude para 2 colunas, esconda as <code>.card__tags</code>,
+          e mova o card 6 para o início com <code>order</code>.
+        </li>
+        <li>
+          <strong>Mobile (<code>max-width: 480px</code>):</strong>
+          mude para 1 coluna, esconda o <code>.card__resumo</code>,
+          transforme o card para layout de sobreposição (imagem como fundo, texto por cima),
+          e mova o card 1 para o final com <code>order</code>.
+        </li>
+      </ol>
+    </aside>
+
+  </body>
+</html>

@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Framed — Gabarito</title>
+    <style>
+      /* ── Reset ── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: #f5f5f0;
+        color: #1a1a1a;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .tag {
+        background: #e8e8e0;
+        padding: 0.2rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: #444;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .section {
+        margin: 64px 0;
+      }
+
+      .section__title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 24px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #1a1a1a;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+      }
+
+      /* ================================================================
+         EXERCÍCIO 1 — GABARITO: Flexbox no cabeçalho
+      ================================================================ */
+
+      .site-header {
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 48px;
+
+        display: flex;                      /* flex no container */
+        justify-content: space-between;    /* logo | nav | botão distribuídos */
+        align-items: center;               /* alinhamento vertical */
+      }
+
+      .site-header__logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: #1a1a1a;
+        text-decoration: none;
+      }
+
+      .site-header__nav {
+        display: flex;       /* nav também é flex */
+        gap: 24px;           /* espaço entre os links */
+      }
+
+      .site-header__link {
+        text-decoration: none;
+        color: #555;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .site-header__link:hover {
+        color: #1a1a1a;
+      }
+
+      .site-header__cta {
+        background: #1a1a1a;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      /* ================================================================
+         EXERCÍCIO 2 — GABARITO: Flexbox no perfil
+      ================================================================ */
+
+      .profile {
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 64px;
+        border: 1px solid #e8e8e0;
+
+        display: flex;          /* container flex */
+        align-items: center;    /* alinhamento vertical */
+        gap: 32px;              /* espaço entre avatar / info / stats */
+      }
+
+      .profile__avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #e8e8e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        flex-shrink: 0;         /* não encolhe com o espaço */
+      }
+
+      .profile__info {
+        flex-grow: 1;           /* cresce e empurra stats para a direita */
+      }
+
+      .profile__name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .profile__bio {
+        color: #555;
+        font-size: 0.9rem;
+        max-width: 480px;
+        margin-bottom: 12px;
+      }
+
+      .profile__tags {
+        display: flex;      /* tags em linha */
+        gap: 8px;           /* espaço entre tags */
+        flex-wrap: wrap;    /* quebra linha se necessário */
+      }
+
+      .profile__stats {
+        display: flex;      /* stats lado a lado */
+        gap: 24px;
+        flex-shrink: 0;
+      }
+
+      .stat {
+        text-align: center;
+        display: flex;          /* valor e label em coluna */
+        flex-direction: column;
+      }
+
+      .stat__value {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1a1a1a;
+      }
+
+      .stat__label {
+        font-size: 0.75rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* ================================================================
+         EXERCÍCIO 3 — GABARITO: Grid com célula expandida
+      ================================================================ */
+
+      .featured-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;   /* 3 colunas: primeira maior */
+        grid-template-rows: 240px 240px;       /* 2 linhas de altura igual */
+        gap: 16px;
+      }
+
+      .featured-card {
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        background: #e8e8e0;
+      }
+
+      .featured-card--large {
+        grid-row: span 2;    /* ocupa 2 linhas */
+      }
+
+      .featured-card__img {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+      }
+
+      .featured-card__img--1 { background: linear-gradient(135deg, #1a1a2e, #4a4a6a); }
+      .featured-card__img--2 { background: linear-gradient(135deg, #2d2d2d, #5a5a5a); }
+      .featured-card__img--3 { background: linear-gradient(135deg, #1a2e1a, #3a5a3a); }
+      .featured-card__img--4 { background: linear-gradient(135deg, #2e1a1a, #5a3a3a); }
+      .featured-card__img--5 { background: linear-gradient(135deg, #1a2a2e, #3a5a5a); }
+
+      .featured-card__overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 12px 16px;
+        background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+        color: #fff;
+      }
+
+      .featured-card__title {
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      .featured-card__meta {
+        font-size: 0.72rem;
+        opacity: 0.75;
+        margin-top: 2px;
+      }
+
+      /* ================================================================
+         EXERCÍCIO 4 — GABARITO: Galeria com grid automático
+      ================================================================ */
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));  /* colunas automáticas */
+        gap: 8px;
+      }
+
+      .photo {
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        background: #e0e0d8;
+        aspect-ratio: 1 / 1;    /* quadrado */
+        overflow: hidden;
+      }
+
+      .photo--1  { background: linear-gradient(135deg, #1a1a2e, #4a4a6a); }
+      .photo--2  { background: linear-gradient(135deg, #2d2d2d, #5a5a5a); }
+      .photo--3  { background: linear-gradient(135deg, #1a2e1a, #3a5a3a); }
+      .photo--4  { background: linear-gradient(135deg, #2e1a1a, #5a3a3a); }
+      .photo--5  { background: linear-gradient(135deg, #1a2a2e, #3a5a5a); }
+      .photo--6  { background: linear-gradient(135deg, #2e2a1a, #5a5a3a); }
+      .photo--7  { background: linear-gradient(135deg, #2a1a2e, #5a3a6a); }
+      .photo--8  { background: linear-gradient(135deg, #1a2e2a, #3a5a52); }
+      .photo--9  { background: linear-gradient(135deg, #2e1a2a, #5a3a52); }
+      .photo--10 { background: linear-gradient(135deg, #1e2a1a, #3e5a3a); }
+      .photo--11 { background: linear-gradient(135deg, #1a1e2e, #3a3e6a); }
+      .photo--12 { background: linear-gradient(135deg, #2e2e1a, #5a5a3a); }
+
+      /* fotos que ocupam 2 colunas */
+      .photo--1,
+      .photo--5,
+      .photo--9 {
+        grid-column: span 2;
+      }
+
+      /* ================================================================
+         EXERCÍCIO 5 — GABARITO: Flex nos cards de sugestão
+      ================================================================ */
+
+      .suggestions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .suggestion-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px 20px;
+        border: 1px solid #e8e8e0;
+
+        display: flex;          /* container flex */
+        align-items: center;    /* alinhamento vertical */
+        gap: 16px;              /* espaço entre avatar / info / botão */
+      }
+
+      .suggestion-card__avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #e8e8e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .suggestion-card__info {
+        display: flex;          /* nome e subtítulo em coluna */
+        flex-direction: column;
+        flex-grow: 1;           /* empurra o botão para a direita */
+      }
+
+      .suggestion-card__name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+
+      .suggestion-card__sub {
+        font-size: 0.78rem;
+        color: #888;
+      }
+
+      .suggestion-card__btn {
+        background: transparent;
+        border: 1.5px solid #1a1a1a;
+        color: #1a1a1a;
+        padding: 6px 16px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+
+      .suggestion-card__btn:hover {
+        background: #1a1a1a;
+        color: #fff;
+      }
+
+      /* ================================================================
+         EXERCÍCIO 6 — GABARITO: Rodapé com grid-template-areas
+      ================================================================ */
+
+      .site-footer {
+        border-top: 1px solid #ddd;
+        padding: 32px 0 48px;
+        margin-top: 32px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;           /* 2 colunas iguais */
+        grid-template-areas: "logo copy";          /* área nomeada */
+        align-items: center;                       /* alinhamento vertical */
+      }
+
+      .site-footer__logo {
+        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        color: #1a1a1a;
+        grid-area: logo;    /* atribui à área "logo" */
+      }
+
+      .site-footer__copy {
+        font-size: 0.8rem;
+        color: #888;
+        grid-area: copy;        /* atribui à área "copy" */
+        justify-self: center;   /* bônus: centraliza na coluna */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+
+      <header class="site-header">
+        <span class="site-header__logo">Framed</span>
+        <nav class="site-header__nav">
+          <a href="#" class="site-header__link">Explorar</a>
+          <a href="#" class="site-header__link">Ensaios</a>
+          <a href="#" class="site-header__link">Sobre</a>
+        </nav>
+        <button class="site-header__cta">Entrar</button>
+      </header>
+
+      <section class="profile">
+        <div class="profile__avatar">📷</div>
+        <div class="profile__info">
+          <h1 class="profile__name">Lena Marques</h1>
+          <p class="profile__bio">
+            Fotógrafa documental baseada em Belo Horizonte.
+            Ensaios urbanos, retratos e luz natural.
+          </p>
+          <div class="profile__tags">
+            <span class="tag">Urbano</span>
+            <span class="tag">Retrato</span>
+            <span class="tag">Analógico</span>
+            <span class="tag">P&B</span>
+          </div>
+        </div>
+        <div class="profile__stats">
+          <div class="stat">
+            <span class="stat__value">214</span>
+            <span class="stat__label">fotos</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">38</span>
+            <span class="stat__label">ensaios</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">4,1k</span>
+            <span class="stat__label">seguidores</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Ensaios em Destaque</h2>
+        <div class="featured-grid">
+          <article class="featured-card featured-card--large">
+            <div class="featured-card__img featured-card__img--1">🌆</div>
+            <div class="featured-card__overlay">
+              <h3 class="featured-card__title">Noite no Viaduto</h3>
+              <p class="featured-card__meta">32 fotos · 2024</p>
+            </div>
+          </article>
+          <article class="featured-card">
+            <div class="featured-card__img featured-card__img--2">🧍</div>
+            <div class="featured-card__overlay">
+              <h3 class="featured-card__title">Retratos do Centro</h3>
+              <p class="featured-card__meta">18 fotos · 2025</p>
+            </div>
+          </article>
+          <article class="featured-card">
+            <div class="featured-card__img featured-card__img--3">🌿</div>
+            <div class="featured-card__overlay">
+              <h3 class="featured-card__title">Jardins Esquecidos</h3>
+              <p class="featured-card__meta">24 fotos · 2025</p>
+            </div>
+          </article>
+          <article class="featured-card">
+            <div class="featured-card__img featured-card__img--4">🚂</div>
+            <div class="featured-card__overlay">
+              <h3 class="featured-card__title">Trilhos e Tempo</h3>
+              <p class="featured-card__meta">41 fotos · 2023</p>
+            </div>
+          </article>
+          <article class="featured-card">
+            <div class="featured-card__img featured-card__img--5">🌊</div>
+            <div class="featured-card__overlay">
+              <h3 class="featured-card__title">Água Parada</h3>
+              <p class="featured-card__meta">15 fotos · 2026</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Todas as Fotos</h2>
+        <div class="photo-grid">
+          <div class="photo photo--1">🌆</div>
+          <div class="photo photo--2">🧍</div>
+          <div class="photo photo--3">🌿</div>
+          <div class="photo photo--4">🚂</div>
+          <div class="photo photo--5">🌊</div>
+          <div class="photo photo--6">🏙️</div>
+          <div class="photo photo--7">🌅</div>
+          <div class="photo photo--8">🪟</div>
+          <div class="photo photo--9">🌁</div>
+          <div class="photo photo--10">🛤️</div>
+          <div class="photo photo--11">🌃</div>
+          <div class="photo photo--12">🏚️</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Quem Seguir</h2>
+        <div class="suggestions">
+          <div class="suggestion-card">
+            <div class="suggestion-card__avatar">🎞️</div>
+            <div class="suggestion-card__info">
+              <span class="suggestion-card__name">Pedro Alves</span>
+              <span class="suggestion-card__sub">Arquitetura · São Paulo</span>
+            </div>
+            <button class="suggestion-card__btn">Seguir</button>
+          </div>
+          <div class="suggestion-card">
+            <div class="suggestion-card__avatar">📸</div>
+            <div class="suggestion-card__info">
+              <span class="suggestion-card__name">Carla Nunes</span>
+              <span class="suggestion-card__sub">Natureza · Florianópolis</span>
+            </div>
+            <button class="suggestion-card__btn">Seguir</button>
+          </div>
+          <div class="suggestion-card">
+            <div class="suggestion-card__avatar">🖼️</div>
+            <div class="suggestion-card__info">
+              <span class="suggestion-card__name">Marcos Lima</span>
+              <span class="suggestion-card__sub">Retrato · Recife</span>
+            </div>
+            <button class="suggestion-card__btn">Seguir</button>
+          </div>
+          <div class="suggestion-card">
+            <div class="suggestion-card__avatar">🌄</div>
+            <div class="suggestion-card__info">
+              <span class="suggestion-card__name">Juliana Costa</span>
+              <span class="suggestion-card__sub">Paisagem · Curitiba</span>
+            </div>
+            <button class="suggestion-card__btn">Seguir</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span class="site-footer__logo">Framed</span>
+        <p class="site-footer__copy">© 2026 Framed. Todos os direitos reservados.</p>
+      </footer>
+
+    </div>
+  </body>
+</html>

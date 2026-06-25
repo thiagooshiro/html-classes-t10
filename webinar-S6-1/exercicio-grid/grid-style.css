@@ -1,0 +1,235 @@
+/* ── Reset ── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: #f0f2f5;
+        padding: 2rem 1.5rem;
+        min-height: 100vh;
+      }
+
+      /* ── Cabeçalho da página ── */
+      .page-header {
+        max-width: 1100px;
+        margin: 0 auto 2rem;
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+        font-weight: 300;
+        color: #1a1a2e;
+        letter-spacing: -0.5px;
+      }
+
+      .page-header p {
+        color: #6c757d;
+        margin-top: 0.4rem;
+        font-size: 1rem;
+      }
+
+      /* ================================================================
+         GRID PRINCIPAL
+         Desktop: 3 colunas, gap de 24px
+         O CSS abaixo é o ponto de partida — não mexa aqui.
+         Os exercícios estão nas seções de media query lá embaixo.
+      ================================================================ */
+      .noticias-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* ── Card ── */
+      .card {
+        background: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.11);
+      }
+
+      /* Área da imagem / capa */
+      .card__capa {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+      }
+
+      /* Cores temáticas por card */
+      .card:nth-child(1) .card__capa { background: linear-gradient(135deg, #667eea, #764ba2); }
+      .card:nth-child(2) .card__capa { background: linear-gradient(135deg, #f093fb, #f5576c); }
+      .card:nth-child(3) .card__capa { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+      .card:nth-child(4) .card__capa { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+      .card:nth-child(5) .card__capa { background: linear-gradient(135deg, #fa709a, #fee140); }
+      .card:nth-child(6) .card__capa { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+
+      /* Corpo do card */
+      .card__corpo {
+        padding: 16px 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .card__categoria {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #764ba2;
+      }
+
+      .card__titulo {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #1a1a2e;
+        line-height: 1.35;
+      }
+
+      .card__resumo {
+        font-size: 0.875rem;
+        color: #495057;
+        line-height: 1.5;
+      }
+
+      .card__rodape {
+        margin-top: auto;
+        padding-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #f0f2f5;
+      }
+
+      .card__autor {
+        font-size: 0.75rem;
+        color: #adb5bd;
+        font-weight: 500;
+      }
+
+      .card__data {
+        font-size: 0.72rem;
+        color: #ced4da;
+      }
+
+      /* ── Tags ── */
+      .card__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .tag {
+        background: #f0f2f5;
+        padding: 0.15rem 0.65rem;
+        border-radius: 20px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        color: #495057;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+
+      /* ── Barra de instrução ── */
+      .instrucoes {
+        max-width: 1100px;
+        margin: 2.5rem auto 0;
+        background: #1a1a2e;
+        color: #e9ecef;
+        border-radius: 12px;
+        padding: 1.2rem 1.8rem;
+        font-size: 0.85rem;
+        line-height: 1.7;
+      }
+
+      .instrucoes h2 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #a78bfa;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .instrucoes ol {
+        padding-left: 1.2rem;
+      }
+
+      .instrucoes li + li {
+        margin-top: 0.3rem;
+      }
+
+      .instrucoes code {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.82rem;
+        color: #93c5fd;
+      }
+
+      /* ================================================================
+         EXERCÍCIO 1 — TABLET (max-width: 768px)
+
+         O que fazer aqui:
+         1. Mudar o grid para 2 colunas
+         2. Esconder as .card__tags
+         3. Reordenar: card 6 vai para o início (order: -1), os demais seguem natural
+      ================================================================ */
+      @media (max-width: 768px) {
+        /* TODO: 1. Mude o grid para 2 colunas */
+        .noticias-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+        /* TODO: 2. Esconda as .card__tags */
+      .card__tags {
+        display: none;
+      }
+        /* TODO: 3. Mova o card 6 para o início com a propriedade order */
+      .card:nth-child(6) {
+        order: -1;
+      }
+
+    }
+
+      /* ================================================================
+         EXERCÍCIO 2 — MOBILE (max-width: 480px)
+
+         O que fazer aqui:
+         1. Mudar o grid para 1 coluna
+         2. Esconder o .card__resumo
+         3. Transformar o layout interno do card: imagem vira fundo absoluto,
+            .card__corpo fica sobreposto com fundo escuro semitransparente
+            Dica: .card precisa de position: relative e uma altura fixa,
+            .card__capa position: absolute cobrindo tudo (top/left/width/height),
+            .card__corpo position: absolute no bottom com background gradient
+         4. Mudar a cor do texto do título para branco
+         5. Mover o card 1 para o final (order)
+      ================================================================ */
+      @media (max-width: 480px) {
+        /* TODO: 1. Mude o grid para 1 coluna */
+
+        /* TODO: 2. Esconda o .card__resumo */
+
+        /* TODO: 3–4. Layout de sobreposição: imagem como fundo, conteúdo por cima */
+
+        /* TODO: 5. Mova o card 1 para o final com a propriedade order */
+      }

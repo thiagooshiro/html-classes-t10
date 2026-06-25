@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pulso — Dashboard de Analytics</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="sidebar">
+        <div class="sidebar__brand">
+          <span class="sidebar__logo">◈ Pulso</span>
+        </div>
+        <nav class="sidebar__nav">
+          <a href="#" class="sidebar__link sidebar__link--active">Visão Geral</a>
+          <a href="#" class="sidebar__link">Aquisição</a>
+          <a href="#" class="sidebar__link">Engajamento</a>
+          <a href="#" class="sidebar__link">Receita</a>
+          <a href="#" class="sidebar__link">Retenção</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__user">
+            <div class="sidebar__avatar">MA</div>
+            <div class="sidebar__user-info">
+              <span class="sidebar__user-name">Marina Assis</span>
+              <span class="sidebar__user-role">Analista Sênior</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── MAIN ── -->
+      <main class="main">
+
+        <!-- ── TOPBAR ── -->
+        <header class="topbar">
+          <div class="topbar__title">
+            <h1 class="topbar__heading">Visão Geral</h1>
+            <span class="topbar__period">Últimos 30 dias</span>
+          </div>
+          <div class="topbar__actions">
+            <button class="btn btn--ghost">Exportar</button>
+            <button class="btn btn--primary">+ Relatório</button>
+          </div>
+        </header>
+
+        <!-- ── KPI STRIP ── -->
+        <section class="kpi-strip">
+
+          <div class="kpi-card">
+            <span class="kpi-card__label">Usuários Ativos</span>
+            <span class="kpi-card__value">84.320</span>
+            <span class="kpi-card__delta kpi-card__delta--up">▲ 12,4%</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-card__label">Sessões</span>
+            <span class="kpi-card__value">231.780</span>
+            <span class="kpi-card__delta kpi-card__delta--up">▲ 8,1%</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-card__label">Taxa de Rejeição</span>
+            <span class="kpi-card__value">38,2%</span>
+            <span class="kpi-card__delta kpi-card__delta--down">▼ 3,7%</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-card__label">Receita (MRR)</span>
+            <span class="kpi-card__value">R$ 142k</span>
+            <span class="kpi-card__delta kpi-card__delta--up">▲ 21,0%</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-card__label">Churn</span>
+            <span class="kpi-card__value">2,3%</span>
+            <span class="kpi-card__delta kpi-card__delta--down">▼ 0,4%</span>
+          </div>
+
+        </section>
+
+        <!-- ── PAINEL CENTRAL ── -->
+        <section class="dashboard-grid">
+
+          <!-- Gráfico principal (placeholder) -->
+          <div class="panel panel--chart">
+            <div class="panel__header">
+              <h2 class="panel__title">Sessões por Dia</h2>
+              <div class="panel__controls">
+                <button class="tab tab--active">7d</button>
+                <button class="tab">30d</button>
+                <button class="tab">90d</button>
+              </div>
+            </div>
+            <div class="chart-placeholder">
+              <div class="chart-placeholder__bar" style="height:55%"></div>
+              <div class="chart-placeholder__bar" style="height:72%"></div>
+              <div class="chart-placeholder__bar" style="height:60%"></div>
+              <div class="chart-placeholder__bar" style="height:88%"></div>
+              <div class="chart-placeholder__bar" style="height:65%"></div>
+              <div class="chart-placeholder__bar" style="height:95%"></div>
+              <div class="chart-placeholder__bar chart-placeholder__bar--today" style="height:78%"></div>
+            </div>
+          </div>
+
+          <!-- Fontes de tráfego -->
+          <div class="panel panel--sources">
+            <div class="panel__header">
+              <h2 class="panel__title">Fontes de Tráfego</h2>
+            </div>
+            <ul class="source-list">
+              <li class="source-item">
+                <span class="source-item__label">Orgânico</span>
+                <div class="source-item__bar-track">
+                  <div class="source-item__bar" style="width:62%"></div>
+                </div>
+                <span class="source-item__pct">62%</span>
+              </li>
+              <li class="source-item">
+                <span class="source-item__label">Direto</span>
+                <div class="source-item__bar-track">
+                  <div class="source-item__bar" style="width:18%"></div>
+                </div>
+                <span class="source-item__pct">18%</span>
+              </li>
+              <li class="source-item">
+                <span class="source-item__label">Social</span>
+                <div class="source-item__bar-track">
+                  <div class="source-item__bar" style="width:12%"></div>
+                </div>
+                <span class="source-item__pct">12%</span>
+              </li>
+              <li class="source-item">
+                <span class="source-item__label">Email</span>
+                <div class="source-item__bar-track">
+                  <div class="source-item__bar" style="width:8%"></div>
+                </div>
+                <span class="source-item__pct">8%</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tabela de páginas -->
+          <div class="panel panel--pages">
+            <div class="panel__header">
+              <h2 class="panel__title">Páginas Mais Visitadas</h2>
+            </div>
+            <table class="pages-table">
+              <thead>
+                <tr>
+                  <th>Página</th>
+                  <th>Visitas</th>
+                  <th>Tempo Médio</th>
+                  <th>Taxa Saída</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="pages-table__page">/home</td>
+                  <td>48.230</td>
+                  <td>2m 14s</td>
+                  <td><span class="badge badge--ok">22%</span></td>
+                </tr>
+                <tr>
+                  <td class="pages-table__page">/pricing</td>
+                  <td>19.870</td>
+                  <td>3m 42s</td>
+                  <td><span class="badge badge--warn">51%</span></td>
+                </tr>
+                <tr>
+                  <td class="pages-table__page">/blog/como-usar</td>
+                  <td>14.510</td>
+                  <td>5m 08s</td>
+                  <td><span class="badge badge--ok">18%</span></td>
+                </tr>
+                <tr>
+                  <td class="pages-table__page">/signup</td>
+                  <td>11.340</td>
+                  <td>1m 55s</td>
+                  <td><span class="badge badge--danger">68%</span></td>
+                </tr>
+                <tr>
+                  <td class="pages-table__page">/docs/api</td>
+                  <td>8.920</td>
+                  <td>7m 31s</td>
+                  <td><span class="badge badge--ok">14%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mini-métricas de conversão -->
+          <div class="panel panel--conversions">
+            <div class="panel__header">
+              <h2 class="panel__title">Funil de Conversão</h2>
+            </div>
+            <div class="funnel">
+              <div class="funnel-step">
+                <div class="funnel-step__bar" style="--w: 100%"></div>
+                <div class="funnel-step__info">
+                  <span class="funnel-step__label">Visitantes</span>
+                  <span class="funnel-step__value">84.320</span>
+                </div>
+              </div>
+              <div class="funnel-step">
+                <div class="funnel-step__bar" style="--w: 54%"></div>
+                <div class="funnel-step__info">
+                  <span class="funnel-step__label">Cadastros</span>
+                  <span class="funnel-step__value">45.530</span>
+                </div>
+              </div>
+              <div class="funnel-step">
+                <div class="funnel-step__bar" style="--w: 28%"></div>
+                <div class="funnel-step__info">
+                  <span class="funnel-step__label">Ativações</span>
+                  <span class="funnel-step__value">23.610</span>
+                </div>
+              </div>
+              <div class="funnel-step">
+                <div class="funnel-step__bar" style="--w: 11%"></div>
+                <div class="funnel-step__info">
+                  <span class="funnel-step__label">Pagantes</span>
+                  <span class="funnel-step__value">9.280</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+  </body>
+</html>

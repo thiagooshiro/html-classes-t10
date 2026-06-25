@@ -1,0 +1,573 @@
+/* ================================================================
+   SABOR & TÉCNICA — App de Receitas
+   Estilos base: NÃO ALTERE esta seção.
+   Exercícios: procure os blocos marcados com EXERCÍCIO.
+================================================================ */
+
+/* ── Reset ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #faf8f4;
+  color: #1a1a1a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.tag {
+  background: #f0ebe0;
+  padding: 0.2rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #6b4f2a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section {
+  margin: 64px 0;
+}
+
+.section__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* ================================================================
+   EXERCÍCIO 1 — BÁSICO: Cabeçalho
+   O cabeçalho tem três filhos: logo, nav e botão.
+   Faça eles ficarem lado a lado com espaço distribuído entre eles,
+   alinhados verticalmente ao centro.
+   Os links dentro da nav também precisam ficar lado a lado.
+================================================================ */
+
+.site-header {
+  padding: 20px 0;
+  border-bottom: 1px solid #e8e0d0;
+  margin-bottom: 48px;
+
+  /* TODO */
+}
+
+.site-header__logo {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #1a1a1a;
+}
+
+.site-header__nav {
+  /* TODO */
+}
+
+.site-header__link {
+  text-decoration: none;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.site-header__cta {
+  background: #c0392b;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ================================================================
+   EXERCÍCIO 2 — BÁSICO: Perfil do chef
+   O perfil tem avatar, informações e estatísticas.
+   Faça os três ficarem lado a lado, alinhados ao centro vertical.
+   As informações devem crescer e ocupar o espaço disponível,
+   empurrando as estatísticas para a direita.
+   As tags dentro do perfil devem ficar em linha e quebrar se necessário.
+   Os números de estatísticas devem ficar lado a lado entre si.
+   Cada stat (valor + rótulo) deve empilhar verticalmente.
+================================================================ */
+
+.chef-profile {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 64px;
+  border: 1px solid #e8e0d0;
+
+  /* TODO */
+}
+
+.chef-profile__avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #f0ebe0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.chef-profile__info {
+  /* TODO */
+}
+
+.chef-profile__badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.15rem 0.7rem;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.chef-profile__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.chef-profile__bio {
+  color: #555;
+  font-size: 0.9rem;
+  max-width: 480px;
+  margin-bottom: 12px;
+}
+
+.chef-profile__tags {
+  /* TODO */
+}
+
+.chef-profile__stats {
+  flex-shrink: 0;
+  /* TODO */
+}
+
+.stat {
+  text-align: center;
+  /* TODO */
+}
+
+.stat__value {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.stat__label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ================================================================
+   EXERCÍCIO 3 — INTERMEDIÁRIO: Receitas em destaque
+   O grid tem 5 cards. O primeiro (hero) deve ser maior e ocupar
+   toda a altura da grade, enquanto os outros 4 formam uma grade
+   2x2 ao lado dele.
+
+   ┌─────────────┬──────┬──────┐
+   │             │  2   │  3   │
+   │      1      ├──────┼──────┤
+   │             │  4   │  5   │
+   └─────────────┴──────┴──────┘
+
+   Os metadados dentro do overlay (tempo, dificuldade, pessoas)
+   precisam ficar lado a lado com espaço entre eles.
+================================================================ */
+
+.featured-grid {
+  /* TODO */
+}
+
+.recipe-card {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #e8e0d0;
+}
+
+.recipe-card--hero {
+  /* TODO */
+}
+
+.recipe-card__img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.recipe-card__img--1 { background: linear-gradient(135deg, #3d1c02, #8b3a0f); }
+.recipe-card__img--2 { background: linear-gradient(135deg, #1a2e1a, #3a5a2a); }
+.recipe-card__img--3 { background: linear-gradient(135deg, #2e2a0a, #6a5a1a); }
+.recipe-card__img--4 { background: linear-gradient(135deg, #1a1a2e, #3a3a6a); }
+.recipe-card__img--5 { background: linear-gradient(135deg, #2e1a0a, #6a3a1a); }
+
+.recipe-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: #fff;
+}
+
+.recipe-card__category {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #c0392b;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.recipe-card__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.recipe-card__meta {
+  /* TODO */
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+/* ================================================================
+   EXERCÍCIO 4 — INTERMEDIÁRIO: Receita detalhada
+   A seção de receita tem dois blocos: ingredientes e passos.
+   Os ingredientes devem ter uma largura fixa menor,
+   e os passos devem ocupar o espaço restante ao lado.
+
+   Dentro dos ingredientes, quantidade e nome precisam
+   ficar na mesma linha, alinhados pela linha de base do texto.
+
+   Cada passo tem um número grande e um bloco de conteúdo.
+   Eles devem ficar lado a lado, alinhados pelo topo.
+================================================================ */
+
+.recipe-detail {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e8e0d0;
+  overflow: hidden;
+
+  /* TODO */
+}
+
+.recipe-detail__ingredients {
+  background: #faf3e8;
+  padding: 32px 24px;
+  border-right: 1px solid #e8e0d0;
+}
+
+.recipe-detail__steps {
+  padding: 32px;
+}
+
+.recipe-detail__subtitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.recipe-detail__serves {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.ingredients-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ingredients-list__item {
+  /* TODO */
+}
+
+.ingredients-list__qty {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #c0392b;
+  min-width: 56px;
+  flex-shrink: 0;
+}
+
+.ingredients-list__name {
+  font-size: 0.88rem;
+  color: #333;
+}
+
+.steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.step-item {
+  /* TODO */
+}
+
+.step-item__number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #e8e0d0;
+  flex-shrink: 0;
+  line-height: 1;
+  min-width: 40px;
+}
+
+.step-item__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.step-item__desc {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ================================================================
+   EXERCÍCIO 5 — INTERMEDIÁRIO: Galeria de receitas
+   A galeria deve criar automaticamente quantas colunas couberem
+   na tela, com cada coluna tendo no mínimo 220px.
+   Cada imagem de card deve ter proporção retrato (mais alta que larga).
+   O primeiro e o quinto card devem ser mais largos que os demais.
+================================================================ */
+
+.recipes-grid {
+  /* TODO */
+}
+
+.recipe-thumb {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e8e0d0;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-thumb__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  /* TODO */
+}
+
+.recipe-thumb__img--1 { background: linear-gradient(135deg, #3d1c02, #8b3a0f); }
+.recipe-thumb__img--2 { background: linear-gradient(135deg, #1a2e1a, #3a5a2a); }
+.recipe-thumb__img--3 { background: linear-gradient(135deg, #2e2a0a, #6a5a1a); }
+.recipe-thumb__img--4 { background: linear-gradient(135deg, #1a1a2e, #3a3a6a); }
+.recipe-thumb__img--5 { background: linear-gradient(135deg, #2e1a0a, #6a3a1a); }
+.recipe-thumb__img--6 { background: linear-gradient(135deg, #0a2e1a, #1a6a3a); }
+.recipe-thumb__img--7 { background: linear-gradient(135deg, #2e1a1a, #6a3a3a); }
+.recipe-thumb__img--8 { background: linear-gradient(135deg, #2e0a0a, #8b1a1a); }
+
+/* TODO: primeiro e quinto card devem ocupar mais espaço horizontal */
+
+.recipe-thumb__info {
+  padding: 12px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.recipe-thumb__category {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #c0392b;
+}
+
+.recipe-thumb__title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.recipe-thumb__meta {
+  margin-top: auto;
+  padding-top: 8px;
+  /* TODO: tempo e dificuldade nas extremidades opostas da mesma linha */
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.recipe-thumb__difficulty {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.recipe-thumb__difficulty--easy   { background: #d4edda; color: #155724; }
+.recipe-thumb__difficulty--medium { background: #fff3cd; color: #856404; }
+.recipe-thumb__difficulty--hard   { background: #f8d7da; color: #721c24; }
+
+/* ================================================================
+   EXERCÍCIO 6 — INTERMEDIÁRIO: Avaliações aninhadas
+   Os cards de avaliação devem aparecer empilhados um abaixo do outro.
+   Dentro de cada card, o cabeçalho tem avatar, autor e estrelas
+   na mesma linha, alinhados verticalmente ao centro.
+   O bloco de autor (nome + data) deve empilhar verticalmente.
+   As estrelas devem ficar coladas na extremidade direita do cabeçalho.
+
+   ┌──────────────────────────────────────────┐
+   │ [avatar]  nome              data  ★★★★★ │
+   │ Texto da avaliação...                    │
+   └──────────────────────────────────────────┘
+================================================================ */
+
+.reviews {
+  /* TODO */
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  border: 1px solid #e8e0d0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-card__header {
+  /* TODO */
+}
+
+.review-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0ebe0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.review-card__author {
+  /* TODO */
+}
+
+.review-card__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.review-card__date {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.review-card__stars {
+  font-size: 1rem;
+  color: #f39c12;
+  /* TODO */
+}
+
+.review-card__text {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ================================================================
+   EXERCÍCIO 7 — AVANÇADO: Responsividade
+   Dois breakpoints: 768px (tablet) e 480px (mobile).
+
+   TABLET (max-width: 768px):
+   - O perfil do chef deve permitir que os elementos quebrem linha,
+     com as informações ocupando a largura toda abaixo do avatar
+   - Os ensaios em destaque: simplifique para 2 colunas,
+     mantendo o hero expandido verticalmente
+   - Ingredientes e passos: empilhe verticalmente
+   - A galeria: duas colunas fixas, cards sem expansão
+
+   MOBILE (max-width: 480px):
+   - O cabeçalho: esconda a navegação, empilhe logo e botão
+   - O perfil: coluna, centralizado
+   - Os ensaios: uma coluna só, hero sem expansão
+   - A galeria muda completamente: cada card vira horizontal,
+     com imagem quadrada à esquerda e informações à direita
+   - As avaliações: as estrelas descem para uma nova linha
+================================================================ */
+
+@media (max-width: 768px) {
+  /* TODO */
+}
+
+@media (max-width: 480px) {
+  /* TODO */
+}
+
+/* ── Rodapé ── */
+.site-footer {
+  border-top: 1px solid #e8e0d0;
+  padding: 32px 0 48px;
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer__logo {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.site-footer__copy {
+  font-size: 0.8rem;
+  color: #888;
+}
